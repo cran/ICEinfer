@@ -1,0 +1,51 @@
+dpunc                   Output list object of class ICEuncrt for the
+                        High Uncertainty numerical example in the
+                        ICEinfer package, data(dulxparx).
+dpwdg                   Output list object of class ICEwedge for the
+                        High Uncertainty numerical example in the
+                        ICEinfer package, data(dulxparx)
+dulxparx                Data for the High Uncertainty numerical example
+                        of Obenchain et al. (2005) from a double-blind
+                        clinical trial comparing duloxetine (an SNRI)
+                        with paroxetine (an SSRI) described in
+                        Goldstein et al. (2004).
+fluoxpin                Data from a double-blind clinical trial
+                        comparing fluoxetine augmented with pindolol
+                        with fluoxetine plus placebo.
+fluoxtca                Cost-Effectiveness data from the Marketscan(SM)
+                        claims database comparing 1242 patients treated
+                        with either fluoxetine (SSRI) or with a TCA /
+                        HCA for major depressive disorder (MDD),
+                        Croghan et al. (1996) and Obenchain et al.
+                        (1997).
+ICEalice                Functions to compute and display ICE
+                        Acceptability Curves.
+ICEcolor                Compute Preferences for Outcomes in a Bootstrap
+                        ICE Distribution that are within a Confidence
+                        Wedge
+ICEepmap                Set Parameter values that define an ICE
+                        Economic Preference Map
+ICEinfer-package        Package for Incremental Cost-Effectiveness
+                        (ICE) Statistical Inference and quantification
+                        of ICE Economic Preference variation.
+ICEscale                ICEscale() functions compute or print ICE
+                        Statistical Inference Summary Statistics
+                        relative to choice for the numerical value of
+                        the Shadow Price of Health, lambda.
+ICEuncrt                Compute the Bootstrap Distribution of ICE
+                        Uncertainty for a specified value of the Shadow
+                        Price of Health, lambda.
+ICEwedge                ICEwedge() functions calculate and display an
+                        Equivariant Wedge-Shaped Confidence Region with
+                        stated Statistical Confidence Level in the
+                        range: 0.50 <= conf <= 0.99.
+plot.ICEcolor           Add Economic Preference Colors to Outcomes in
+                        the Bootstrap ICE Distribution of Uncertainty
+                        that also lie within an ICE Statistical
+                        Confidence Wedge
+plot.ICEepmap           Display the Indifference Curves of an ICE
+                        Economic Preference Map
+plot.ICEuncrt           Display Scatter for a possibly Transformed
+                        Bootstrap Distribution of ICE Uncertainty
+print.ICEuncrt          Summary Statistics for a possibly Transformed
+                        Bootstrap Distribution of ICE Uncertainty
