@@ -8,7 +8,7 @@
  graphically displays the bootstrap distrib of ICE uncertainty currently stored in x.  An
  invocation of the form x10 <- plot(x, lfact=10) increases the value of x item lambda by a factor
  of 10, displays that transformed bootstrap distribution, and stores it in object x10.  When
- x item unit is cost, an invocation of the form xs <- plot(x, swu=TRUE) displays the bootstrap
+ the x item unit is cost, an invocation of the form xs <- plot(x, swu=TRUE) displays the bootstrap
  distribution stored in x using effe units and stores the transformed distribution in object
  xs.  
 }
@@ -16,23 +16,23 @@
  \method{plot}{ICEuncrt}(x, lfact = 1, swu = FALSE, alibi = FALSE, \dots)
 }
 \arguments{
-  \item{x}{Required; Output list object of class ICEuncrt.}
-  \item{lfact}{Optional; Positive factor multiplying the stored value of x item lambda.}
-  \item{swu}{Optional; Logical value of TRUE or FALSE to control switching the stored value of
+  \item{x}{Output list object of class ICEuncrt.}
+  \item{lfact}{Positive factor multiplying the stored value of x item lambda.}
+  \item{swu}{Logical value of TRUE or FALSE to control switching the stored value of
    x item unit between the 2 possibilities, cost and effe.}
-  \item{alibi}{Optional; Logical value of TRUE or FALSE to control scaling of axes.  alibi = FALSE
+  \item{alibi}{Logical value of TRUE or FALSE to control scaling of axes.  alibi = FALSE
    produces the default alias graphic in which points in the bootstrap uncertainty scatter are
-   held fixed in space, and changes in lambda change the scaling (tick marks) along either the
-   horizontal axis of a cost unit display or else along the vertical axis of an effe unit
+   held fixed in space, and changes in lambda merely change the scaling (tick marks) along either
+   the horizontal axis of a cost unit display or else along the vertical axis of an effe unit
    display.  alibi = TRUE produces an alibi graphic in which the scaling (and range) is the
    same along both axes, and changes in lambda cause the points in the bootstrap uncertainty
-   scatter to move either left or right in a cost unit display or else up or dowm in an effe
-   unit display.}
-  \item{\dots}{Optional; Argument(s) passed on to plot().}
+   scatter to literally move either left or right in a cost unit display or else up or dowm in
+   an effe unit display.}
+  \item{\dots}{Optional argument(s) passed on to plot().}
 }
 \details{After a single call to ICEuncrt() for an initial value of the Shadow Price of Health,
-  lambda, and an initial choice of display unit, cost or effe, multiple calls to
-  plot.ICEuncrt() are usually made.  Alternative statistical choices for lambda can be suggested
+  lambda, and an initial choice of display unit (cost or effe), multiple calls to
+  plot.ICEuncrt() are usually made.  Alternative economic choices for lambda can be suggested
   by making calls to ICEscale() with different values for lambda.  Because the Bootstrap
   Distribution of ICE Uncertainty is equivariant under changes in lambda, it is much faster to
   transform an existing bootstrap distribution than to generate a new one for a different value
@@ -60,7 +60,7 @@
 
  Obenchain RL.  ICEplane: a windows application for incremental cost-effectiveness (ICE)
  statistical inference. Copyright (c) \bold{Pharmaceutical Research and Manufacturers of America}
- (PhRMA.)   http://www.math.iupui.edu/~indyasa/bobodown.htm   1997--2007.
+ (PhRMA.)   http://members.iquest.net/~softrx/  1997--2007.
 
  Obenchain RL.  Resampling and multiplicity in cost-effectiveness inference.  \emph{Journal of
  Biopharmaceutical Statistics} 1999; \bold{9(4)}: 563--582.

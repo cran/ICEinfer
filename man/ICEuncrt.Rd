@@ -1,9 +1,6 @@
 \name{ICEuncrt}
 \alias{ICEuncrt}
-\title{
- Compute the Bootstrap Distribution of ICE Uncertainty for a specified value of the Shadow
- Price of Health, lambda.
-}
+\title{Compute Bootstrap Distribution of ICE Uncertainty for given Shadow Price of Health, lambda}
 \description{
  ICEuncrt() uses bootstrap resampling (with replacement) to compute the distribution of
  uncertainty for 2-sample, 2-variable statistical inference.  The 2 variables must be measures
@@ -58,23 +55,22 @@ ICEuncrt(df, trtm, xeffe, ycost, lambda = 1, unit = cost, R = 25000, seed = 0)
 \references{
  Obenchain RL.  ICEplane: a windows application for incremental cost-effectiveness (ICE)
  statistical inference. Copyright (c) \bold{Pharmaceutical Research and Manufacturers of America}
- (PhRMA.)   http://www.math.iupui.edu/~indyasa/bobodown.htm   1997--2007.
+ (PhRMA.)   http://members.iquest.net/~softrx/  1997-2007.
+ 
+ Obenchain RL, Melfi CA, Croghan TW, Buesching DP. Bootstrap analyses of cost-effectiveness
+ in antidepressant pharmacotherapy.  \emph{PharmacoEconomics} 1997; \bold{17}: 1200-1206.
 
  Obenchain RL.  Resampling and multiplicity in cost-effectiveness inference.  \emph{Journal of
- Biopharmaceutical Statistics} 1999; \bold{9(4)}: 563--582.
+ Biopharmaceutical Statistics} 1999; \bold{9(4)}: 563-582.
  
- Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2007; 30 pages.
- 
- Cook JR, Heyse JF.  Use of an angular transformation for ratio estimation in cost-effectiveness
- analysis.  \emph{Statistics in Medicine}  2000; \bold{19}: 2989-3003.
+ Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
 }
-\author{Bob Obenchain <softrx@iquest.net>}
+\author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEscale}}, \code{\link{plot.ICEuncrt}} and \code{\link{print.ICEuncrt}}}
 \examples{
   data(dulxparx)
   # Generating a bootstrap ICE uncertainty distribution is time consuming.
   dpunc <- ICEuncrt(dulxparx, dulx, idb, ru, lambda=0.26)
-  dpunc
   plot(dpunc)
   # Transforming an existing bootstrap ICE uncertainty distribution is fast.
   dpuncX <- plot(dpunc, lfact=10)

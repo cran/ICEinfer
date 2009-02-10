@@ -3,41 +3,37 @@ require(ICEinfer)
 data(dulxparx)
 # Effectiveness = idb, Cost = ru, trtm = dulx where
 # dulx = 1 ==> Duloxetine and dulx = 0 ==> Paroxetine
-
-cat("\n Display of Lambda => Shadow Price Summary Statistics...\n")
+#
+# Display of Lambda => Shadow Price Summary Statistics...
 ICEscale(dulxparx, dulx, idb, ru)
 ICEscale(dulxparx, dulx, idb, ru, lambda=0.26)
 
-cat("\n Bootstrap ICE Uncertainty calculations can be lengthy...\n")
+# Bootstrap ICE Uncertainty calculations can be time consuming...
 dpunc <- ICEuncrt(dulxparx, dulx, idb, ru, lambda=0.26)
 dpunc
 
-cat("\n Display the Bootstrap ICE Uncertainty Distribution...")
+# Display the Bootstrap ICE Uncertainty Distribution...
 plot(dpunc)
 
 dpwdg <- ICEwedge(dpunc)
 dpwdg
 opar <- par(ask = dev.interactive(orNone = TRUE))
-cat("\n Click within graphics window to display the Bootstrap 95% Confidence Wedge...\n")
+# Click within graphics window to display the Bootstrap 95% Confidence Wedge...
 plot(dpwdg)
 
-cat("\n Computing VAGR Acceptability and ALICE Curves...\n")
+# Computing VAGR Acceptability and ALICE Curves...
 dpacc <- ICEalice(dpwdg)
-dpacc
 plot(dpacc)
 
-cat("\n Color Interior of Confidence Wedge with LINEAR Economic Preferences...\n")
+# Color Interior of Confidence Wedge with LINEAR Economic Preferences...
 dpcol <- ICEcolor(dpwdg, gamma=1)
-dpcol
 plot(dpcol)
 
-cat("\n Increase Lambda and Recolor Confidence Wedge with NON-Linear Preferences...\n")
+# Increase Lambda and Recolor Confidence Wedge with NON-Linear Preferences...
 dpcol <- ICEcolor(dpwdg, lfact=10)
-dpcol
 plot(dpcol)
 
-cat("\n Decrease Lambda and Recolor Confidence Wedge with LINEAR Preferences...\n")
+# Decrease Lambda and Recolor Confidence Wedge with LINEAR Preferences...
 dpcol <- ICEcolor(dpwdg, lfact=10, gamma=1)
-dpcol
 plot(dpcol)
 par(opar)

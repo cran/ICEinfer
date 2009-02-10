@@ -17,6 +17,7 @@ function (ICEw)
         13)))
     dimnames(acc) <- list(rep(1:13), c("ICEangle", "WTP", "VAGR", 
         "WTA", "ALICE"))
+    neqcl <- swqcl <- 0    
     for (i in 1:n) {
         for (j in 1:13) {
             if (ia[i] <= acc[j, 1] && ia[i] >= acc[j, 1] - 180) 
@@ -24,10 +25,17 @@ function (ICEw)
             if (ia[i] <= acc[j, 1] && ia[i] >= -acc[j, 1]) 
                 acc[j, 5] <- acc[j, 5] + 1
         }
+        if (ia[i] > 45 && ia[i] <= 135) 
+            neqcl <- neqcl + 1
+        if (ia[i] < -45 && ia[i] >= -135) 
+            swqcl <- swqcl + 1     
     }
     acc[, 3] <- acc[, 3]/n
     acc[, 5] <- acc[, 5]/n
-    ICEaccol <- list(lambda = lambda, unit = unit, ia = ia, acc = acc)
+    neqcl <- neqcl/n
+    swqcl <- swqcl/n
+    qcl <- round(100 * as.vector(cbind(acc[1,5], neqcl, swqcl, 1-acc[13,5])), digits = 1)
+    ICEaccol <- list(lambda = lambda, unit = unit, ia = ia, acc = acc, qcl = qcl)
     class(ICEaccol) <- "ICEalice"
     ICEaccol
 }
@@ -561,6 +569,8 @@ function (x, ...)
     cat(paste("\nICE Differences in both Cost and Effectiveness expressed in", 
         x$unit, "units.\n\n"))
     print(x$acc)
+    cat("\nICE Quadrant Confidence Level Percentages... (SE, NE, SW, NW)\n")
+    print(x$qcl) 
     cat("\n")
 }
 `print.ICEcolor` <-

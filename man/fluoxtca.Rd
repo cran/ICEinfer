@@ -1,15 +1,13 @@
 \name{fluoxtca}
 \alias{fluoxtca}
 \docType{data}
-\title{
- Cost-Effectiveness data from the Marketscan(SM) claims database comparing 1242 patients
- treated with either fluoxetine (SSRI) or with a TCA / HCA for major depressive disorder (MDD),
- Croghan et al. (1996) and Obenchain et al. (1997).
-}
+\title{Cost-Effectiveness data for 1242 MDD patients from Marketscan(SM) claims database}
 \description{
  In 1990-1992, the Marketscan(SM) database included medical and pharmacy claims for
  approximately 700,000 individuals whose health insurance was provided by large corporations
- throughout the United States.  All 1242 patients were continuously enrolled for at least 4
+ throughout the United States.  Outcomes for 1242 patients treated with either fluoxetine (SSRI)
+ or with a TCA / HCA for major depressive disorder (MDD) were discussed in Croghan et al. (1996)
+ and Obenchain et al. (1997).  All 1242 patients were continuously enrolled for at least 4
  months prior to their initial antidepressant prescription and for the following 12 months.
 }
 \usage{data(fluoxtca)}
@@ -45,7 +43,7 @@
   
   Obenchain RL.  \bold{ICEplane}: a windows application for incremental cost-effectiveness (ICE)
   statistical inference. Copyright(c) Pharmaceutical Research and Manufacturers of America
-  (PhRMA.)   \bold{http://www.math.iupui.edu/~indyasa/ bobodown.htm}  Revised 1997--2007.
+  (PhRMA.)   \bold{http://members.iquest.net/~softrx/}  Revised 1997--2007.
   
   Obenchain RL. \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2007; 30 pages.
   

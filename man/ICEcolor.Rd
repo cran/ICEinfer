@@ -1,34 +1,37 @@
 \name{ICEcolor}
 \alias{ICEcolor}
-\title{
- Compute Preferences for Outcomes in a Bootstrap ICE Distribution that are within a Confidence Wedge
-}
+\title{Compute Preference Colors for Outcomes in a Bootstrap ICE Scatter within a Confidence Wedge}
 \description{
  Assuming ICEw is an object of class ICEwedge, ICEcolor uses the value of lambda given
  by lfact * (ICEw item lambda) and the ICE Preference Map with parameters beta and gamma to compute
- the Economic Preference value for each point within the Bootstrap Distribution of ICE Uncertainty
- that also lies within the ICEwedge.
+ the Economic Preference value for only the points in a Bootstrap Distribution of ICE Uncertainty
+ that also happen to fall within the ICE confidence wedge.  When the overall level of confidence
+ (statistical size of the wedge) is held fixed, the points to be colored are always the very same
+ points for all choices of lambda.  However, the numerical value of preference (and thus the color)
+ for each such point as well as potential overall asymmetry in the resulting ICE map do depend
+ greatly upon choice of lambda. 
 }
 \usage{
- ICEcolor(ICEw, lfact = 1, beta = 1, gamma = 3 + 2 * sqrt(2)) 
+ ICEcolor(ICEw, lfact = 1, beta = 1, gamma = 3+2*sqrt(2)) 
 }
 \arguments{
-  \item{ICEw}{Required; Existing ICEwedge object.}
-  \item{lfact}{Required; Strictly positive multiplier for ICEw item lambda.}
-  \item{beta}{Required; Strictly positive Returns-to-Scale power parameter for the ICE
+  \item{ICEw}{Existing ICEwedge object.}
+  \item{lfact}{Strictly positive multiplier for ICEw item lambda.}
+  \item{beta}{Strictly positive Returns-to-Scale power parameter for the ICE
    Preference Map.  beta = 1 implies linear (constant) Returns to Scale.  beta > 0 and < 1
    implies diminishing Returns to Scale.  beta > 1 implies increasing Returns to Scale.}
-  \item{gamma}{Required; Strictly positive Directional power parameter.  The smallest
-   reasonable value for gamma is usually gamma = beta, which yields a (generalized) linear
-   map.  The largest reasonable value for gamma is usually gamma = beta*(3+2*sgrt(2)), which
-   yields a map that satisfies the Cartesian Monotonicity Axiom and also yields finite WTP and
-   WTA values greater than or equat to 0 but less than +Inf.}
+  \item{gamma}{Strictly positive Directional power parameter.  The smallest reasonable value
+   for gamma is usually gamma = beta, which yields a (generalized) linear map.  The largest
+   reasonable value for gamma is usually gamma = beta*(3+2*sgrt(2)), which yields a map that
+   satisfies the Cartesian Monotonicity Axiom and also admits all possible finite values for
+   WTP and WTA, i.e. all values greater than or equal to 0 but less than +Inf.}
 }
-\details{Multiple calls to ICEcolor() are usually made for different lfact multipliers of
-  x item lambda as well as different choices for the ICE Preference power parameters, beta and
-  gamma.  Calls to plot(x, alibi) for these alternative ICEcolor x-objects can be used to
-  illustrate that Economic Uncertainty can literally SWAMP the Statistical Uncertainty within
-  patient level data on the relative cost and effectiveness of two treatments.  
+\details{Multiple calls to ICEcolor() are usually made for different lfact multipliers of the
+  lambda item within ICEw as well as different choices for the ICE Preference power parameters,
+  beta and gamma.  Calls to plot(x, alibi) for these alternative ICEcolor x-objects can be used
+  to illustrate that exogenous Economic Uncertainty can literally SWAMP the Statistical
+  Uncertainty endogenous to patient level data on the relative cost and effectiveness of two
+  treatments.  
 }
 \value{
   Object of class ICEcolor containing an output list with the following items:
@@ -49,19 +52,21 @@
  analysis.  \emph{Statistics in Medicine}  2000; \bold{19}: 2989-3003.
  
  Obenchain RL.  ICE Preference Maps: Nonlinear Generalizations of Net Benefit and Acceptability.
- \emph{Lilly US Health Outcomes White Paper}.  2007; 52 pages.
+ \emph{Health Serv Outcomes Res Method}  2008; \bold{8}: 31-56. DOI 10.1007/s10742-007-0027-2.
+ Open Access.
  
- Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2007; 30 pages.
+ Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
 }
-\author{Bob Obenchain <softrx@iquest.net>}
+\author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEwedge}}, \code{\link{plot.ICEcolor}} and \code{\link{print.ICEcolor}}}
 \examples{
+  # Read in previously computed ICEwedge output list.
   data(dpwdg)
   dpcol <- ICEcolor(dpwdg)
-  dpcol
+  # Display preference coloring for the stored value of lambda.
   plot(dpcol)
   dpcolX <- ICEcolor(dpwdg, lfact=10)
-  dpcolX
+  # Display preference coloring when lambda is increased by a factor of 10.
   plot(dpcolX)
 }
 \keyword{methods}

@@ -1,10 +1,7 @@
 \name{fluoxpin}
 \alias{fluoxpin}
 \docType{data}
-\title{
- Data from a double-blind clinical trial comparing fluoxetine augmented with pindolol with
- fluoxetine plus placebo.
-}
+\title{Data from a double-blind clinical trial comparing fluoxetine plus pindolol with fluoxetine alone}
 \description{These data are from a Spanish double-blind clinical trial in which 55 patients were
  randomized to fluoxetine (an SSRI) plus pindolol (a Beta Blocker) and 56 patients were randomized
  to fluoxetine plus placebo for treatment of major depressive disorder (MDD), Sacristan et al.
@@ -58,7 +55,7 @@
   major depressive disorder: results from a randomized, double blind clinical trial. \emph{Int
   Clin Psychopharmacol} 2000; \bold{15}: 107--113.
   
-  Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2007; 30 pages.
+  Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
   
   Owen AB.  \emph{Empirical Likelihood}  New York: Chapman and Hall/CRC.  2001.  
 }
@@ -66,4 +63,4 @@
     # Demo of ICEinfer functionality on the fluoxpin dataset...
     demo(fluoxpin)
 }
-\keyword{datasets}
+\keyword{datasets} 

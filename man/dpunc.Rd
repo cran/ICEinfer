@@ -12,20 +12,22 @@
 \usage{data(dpunc)}
 \format{
   Output list object of class ICEuncrt.
-  \item{df}{Saved value of the name of the data.frame input to ICEuncrt.}
-  \item{lambda}{Saved positive value of lambda input to ICEuncrt.}
-  \item{unit}{Saved value of unit, cost or effe, input to ICEuncrt.}
-  \item{R}{Saved integer value for number of bootstrap replications input to ICEuncrt.}
-  \item{trtm}{Saved name of the treatment indicator within the df data.frame.}
-  \item{xeffe}{Saved name of the treatment effectiveness variable within the df data.frame.}
-  \item{ycost}{Saved name of the treatment cost variable within the df data.frame.}
-  \item{effcst}{Saved value of the sorted 3-variable (trtm,effe,cost) data.frame.}
-  \item{t1}{Observed value of (DeltaEffe, DeltaCost) when each patient is included exactly once.}
-  \item{t}{R x 2 matrix of values of (DeltaEffe, DeltaCost) computed from bootstrap resamples.}
-  \item{seed}{Saved value of the seed used to start pseudo random number generation.}
+  \describe{
+    \item{df}{Saved value of the name of the data.frame input to ICEuncrt.}
+    \item{lambda}{Saved positive value of lambda input to ICEuncrt.}
+    \item{unit}{Saved value of unit, cost or effe, input to ICEuncrt.}
+    \item{R}{Saved integer value for number of bootstrap replications input to ICEuncrt.}
+    \item{trtm}{Saved name of the treatment indicator within the df data.frame.}
+    \item{xeffe}{Saved name of the treatment effectiveness variable within the df data.frame.}
+    \item{ycost}{Saved name of the treatment cost variable within the df data.frame.}
+    \item{effcst}{Saved value of the sorted 3-variable (trtm,effe,cost) data.frame.}
+    \item{t1}{Observed value of (DeltaEffe, DeltaCost) when each patient is included exactly once.}
+    \item{t}{R x 2 matrix of values of (DeltaEffe, DeltaCost) computed from bootstrap resamples.}
+    \item{seed}{Saved value of the seed used to start pseudo random number generation.}
+  }
 }
 \references{
-  Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2007; 30 pages.
+  Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
 }
 \examples{
     # Intermediate ICEinfer Output List for the dulxparx dataset...

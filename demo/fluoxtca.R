@@ -3,40 +3,38 @@ require(ICEinfer)
 data(fluoxtca)
 # Effectiveness = stable, Cost = cost, Trtm = fluox where
 # fluox = 1 ==> fluoxetine and fluox = 0 ==> TCA or HCA
-cat("\nDisplay of Lambda => Shadow Price Summary Statistics...\n")
+#
+# Display of Lambda => Shadow Price Summary Statistics...
+
 ICEscale(fluoxtca, fluox, stable, cost)
 ICEscale(fluoxtca, fluox, stable, cost, lambda=10000)
 
-cat("\nBootstrap ICE Uncertainty calculations can be lengthy...\n")
+# Bootstrap ICE Uncertainty calculations can be lengthy...
 ftunc <- ICEuncrt(fluoxtca, fluox, stable, cost, lambda=10000)
 ftunc
 
-cat("\nDisplay the Bootstrap ICE Uncertainty Distribution...\n")
+# Display the Bootstrap ICE Uncertainty Distribution...\n")
 plot(ftunc)
 
 ftwdg <- ICEwedge(ftunc)
 ftwdg
 opar <- par(ask = dev.interactive(orNone = TRUE))
-cat("\nClick within graphics window to display the Bootstrap 95% Confidence Wedge...\n")
+# Click within graphics window to display the Bootstrap 95% Confidence Wedge...
 plot(ftwdg)
 
-cat("\nComputing VAGR Acceptability and ALICE Curves...\n")
+# Computing VAGR Acceptability and ALICE Curves...\n")
 ftacc <- ICEalice(ftwdg)
-ftacc
 plot(ftacc)
 
-cat("\nColor Interior of Confidence Wedge with LINEAR Economic Preferences...\n")
+# Color Interior of Confidence Wedge with LINEAR Economic Preferences...
 ftcol <- ICEcolor(ftwdg, gamma=1)
-ftcol
 plot(ftcol)
 
-cat("\nIncrease Lambda and Recolor Confidence Wedge with NON-Linear Preferences...\n")
-ftcol <- ICEcolor(ftwdg, lfact=10)
-ftcol
-plot(ftcol)
+# Increase Lambda and Recolor Confidence Wedge with NON-Linear Preferences...
+ftcol2 <- ICEcolor(ftwdg, lfact=10)
+plot(ftcol2)
 
-cat("\nDecrease Lambda and Recolor Confidence Wedge with LINEAR Preferences...\n")
-ftcol <- ICEcolor(ftwdg, lfact=10, gamma=1)
-ftcol
-plot(ftcol)
+# Decrease Lambda and Recolor Confidence Wedge with LINEAR Preferences...
+ftcol3 <- ICEcolor(ftwdg, lfact=10, gamma=1)
+plot(ftcol3)
 par(opar)

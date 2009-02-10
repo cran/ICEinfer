@@ -1,14 +1,12 @@
 \name{dulxparx}
 \alias{dulxparx}
 \docType{data}
-\title{Data for the High Uncertainty numerical example of Obenchain et al. (2005) from
- a double-blind clinical trial comparing duloxetine (an SNRI) with paroxetine (an SSRI) 
- described in Goldstein et al. (2004).
-}
+\title{Data for the High Uncertainty numerical example of Obenchain et al. (2005)}
 \description{The data are from two arms of a double-blind clinical trial in which 91 patients
- were randomized to duloxetine 80 mg/d (40 mg BID) and 87 patients were randomized to paroxetine
- 20 mg/d for treatment of major depressive disorder (MDD).  Missing-data-imputation and
- sensitivity-analyses were needed to make meaningful cost-effectiveness comparisons in this study.
+ were randomized to the SNRI duloxetine 80 mg/d (40 mg BID) and 87 patients were randomized to
+ the SSRI paroxetine 20 mg/d for treatment of major depressive disorder (MDD).  Missing-data-
+ imputation and sensitivity-analyses were needed to make meaningful cost-effectiveness
+ comparisons in this study.
 }
 \usage{data(dulxparx)}
 \format{
@@ -48,7 +46,7 @@
   confidence levels:  three degrees of dominance.  \emph{J Biopharm Stat}  2005; \bold{15(3)}:
   419--436.
 
-  Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2007; 30 pages.
+  Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
   
   Schoenbaum M, Unutzer J, Sherbourne C, Duan N, Rubenstein LV, Miranda J, Meredith LS, Carney
   MF, Wells K.  Cost-effectiveness of practice-initiated quality improvement for depression:

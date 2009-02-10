@@ -23,21 +23,17 @@ plot(fpwdg)
 
 cat("\nComputing VAGR Acceptability and ALICE Curves...\n")
 fpacc <- ICEalice(fpwdg)
-fpacc
 plot(fpacc)
 
 cat("\nColor Interior of Confidence Wedge with LINEAR Economic Preferences...\n")
 fpcol <- ICEcolor(fpwdg, gamma=1)
-fpcol
 plot(fpcol)
 
 cat("\nIncrease Lambda and Recolor Confidence Wedge with NON-Linear Preferences...\n")
 fpcol <- ICEcolor(fpwdg, lfact=10)
-fpcol
 plot(fpcol)
 
 cat("\nDecrease Lambda and Recolor Confidence Wedge with LINEAR Preferences...\n")
 fpcol <- ICEcolor(fpwdg, lfact=10, gamma=1)
-fpcol
 plot(fpcol)
 par(opar)

@@ -2,7 +2,7 @@
 \alias{ICEscale}
 \title{
  ICEscale() functions compute or print ICE Statistical Inference Summary Statistics
- relative to choice for the numerical value of the Shadow Price of Health, lambda.
+ relative to choice for the numerical value of the Shadow Price of Health, lambda
 }
 \description{
  ICEscale() computes Summary Statistics for 2-sample, 2-variable inference where one variable
@@ -60,12 +60,12 @@ ICEscale(df, trtm, xeffe, ycost, lambda = 1, unit = cost)
  statistical inference. Copyright (c) \bold{Pharmaceutical Research and Manufacturers of America}
  (PhRMA.)   http://www.math.iupui.edu/~indyasa/bobodown.htm   1997--2007.
  
- Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2007; 30 pages.
+ Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
  
  Cook JR, Heyse JF.  Use of an angular transformation for ratio estimation in cost-effectiveness
  analysis.  \emph{Statistics in Medicine}  2000; \bold{19}: 2989-3003.
 }
-\author{Bob Obenchain <softrx@iquest.net>}
+\author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEscale}}, \code{\link{plot.ICEuncrt}} and \code{\link{print.ICEuncrt}}}
 \examples{
   data(dulxparx)

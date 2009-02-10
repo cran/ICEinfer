@@ -1,10 +1,10 @@
 Package: ICEinfer
-Title: Incremental Cost-Effectiveness (ICE) Statistical Inference (from Two Unbiased Samples)
-Version: 0.1-1
-Date: 2007-07-13
-Author: Bob Obenchain <softrx@iquest.net> 
-Maintainer: Bob Obenchain <softrx@iquest.net>
-Depends: R (>= 2.5.0)
+Version: 0.2-0
+Date: 2009-02-10
+Title: Incremental Cost-Effectiveness (ICE) Statistical Inference from Two Unbiased Samples
+Author: Bob Obenchain <wizbob@att.net> 
+Maintainer: Bob Obenchain <wizbob@att.net>
+Depends: R (>= 2.5.0), lattice
 Description: Given two unbiased samples of patient level data on cost and effectiveness
   for a pair of treatments, make head-to-head treatment comparisons by (i) generating the
   bivariate bootstrap resampling distribution of ICE uncertainty for a specified value of
@@ -15,6 +15,6 @@ Description: Given two unbiased samples of patient level data on cost and effect
   parameters, (iv) display VAGR and ALICE acceptability curves, and (v) display indifference
   (iso-preference) curves from an ICE map with specified values of lambda, beta and gamma or
   eta parameters. 
-License: GPL version 2 or later; softrx@iquest.net
-URL: http://www.r-project.org, http://www.math.iupui.edu/~indyasa/bobodown.htm
-Packaged: Tue Jul 17 19:15:57 2007; BobO
+License: GPL (>= 2)
+URL: http://www.r-project.org, http://members.iquest.net/~softrx/
+Packaged: Sun Feb 15 10:30:26 2009; hornik

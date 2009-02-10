@@ -14,6 +14,6 @@
 \title{Internal ICEinfer Functions.}
 \description{Internal method functions for the ICEinfer package.  The plot() and
  print() functions also accept optional \dots arguments documented elsewhere.}
-\author{Bob Obenchain <softrx@iquest.net>}
+\author{Bob Obenchain <wizbob@att.net>}
 \keyword{methods}
-\keyword{internal}
+\keyword{internal}  

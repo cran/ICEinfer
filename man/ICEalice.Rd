@@ -1,12 +1,14 @@
 \name{ICEalice}
 \alias{ICEalice}
-\title{Functions to compute and display ICE Acceptability Curves.}
-\description{ICEalice() computes statistics for the VAGR Acceptability Curve and
- for the Buckingham ALICE curve.  plot.ICEalice() plots the VAGR curve versus
- Willingness to Pay (WTP) ICE Ratios followed my the ALICE curve versus the range
- of Absolute ICE Angles from 45 degrees to 135 degrees.  print.ICEalice() displays
- the 13 x 5 matrix of values for Absolute ICEangle, WTP, VAGR Acceptability, WTA
- and ALICE statistics. 
+\title{Functions to compute and display ICE Acceptability Curves}
+\description{
+ ICEalice() computes statistics for the VAGR Acceptability Curve and for the
+ Buckingham ALICE curve.  Plots for the resulting ICEalice object are of two types:
+ [1] a VAGR curve where the horizontal axis is the Willingness to Pay (WTP) ICE Ratio,
+ and [2] a monotone ALICE curve where the horizontal axis is the Absolute Value of
+ the ICE Polar Angle, which varies from +45 degrees to +135 degrees.  Printing an
+ ICEalice object yields a 13 x 5 table (matrix) of numerical values for Absolute
+ ICEangle, WTP, VAGR Acceptability, WTA and ALICE acceptability, respectively. 
 }
 \usage{
  ICEalice(ICEw)
@@ -21,7 +23,7 @@
   horizontal, representing lambda = WTP = 0, and rotates counter-clockwise until it
   becomes vertical, representing lambda = WTP = +Inf. 
   
-  The Buckingham ALICE Curve assums the lambra is held fixed.  It displays the fraction
+  The Buckingham ALICE Curve assumes that lambra is held fixed.  It displays the fraction
   of outcomes within the Bootstrap distribution of ICE Uncertainty that lie on or between
   a pair of rotating ICE rays (eminating from the ICE origin) with slopes representing
   KINKed values of WTP < WTA that always satisfy Obenchain's LINK function, lambda =
@@ -52,24 +54,26 @@
  Van Hout BA, Al MJ, Gordon GS, Rutten FFH.  Costs, effects and C/E ratios alongside a
  clinical trial.  (VAGR curve)  \emph{Health Economics} 1994; \bold{3}: 309-319.
  
- Buckingham K.  Personal communications including a draft manuscript entitled
- Representing the cumulative probability of Acceptability Levels In Cost Effectiveness
+ Buckingham K.  Personal communications including a draft manuscript entitled:
+ Representing the cumulative probability of Acceptability Levels In Cost Effectiveness.
  (ALICE curve)  2003.
  
  Fenwick E, O'Brien BJ, Briggs AH.  Cost-effectiveness acceptability curves - facts,
  fallacies and frequently asked questions.  \emph{Health Economics}  2004; \bold{13}: 405-415.
 
  Obenchain RL.  ICE Preference Maps: Nonlinear Generalizations of Net Benefit and Acceptability.
- \emph{Lilly US Health Outcomes White Paper}.  2007; 52 pages.
+ \emph{Health Serv Outcomes Res Method}  2008; \bold{8}: 31-56. DOI 10.1007/s10742-007-0027-2.
+ Open Access.
  
- Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2007; 30 pages.
+ Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
 }
-\author{Bob Obenchain <softrx@iquest.net>}
+\author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEwedge}} and \code{\link{ICEcolor}}}
 \examples{
+  # Read in previously computed ICEwedge output list.
   data(dpwdg)
   dpacc <- ICEalice(dpwdg)
-  dpacc
+  # Display VAGR and ALICE acceptability curves.
   plot(dpacc)
 }
 \keyword{methods}

@@ -1,15 +1,12 @@
 \name{plot.ICEcolor}
 \alias{plot.ICEcolor}
-\title{
- Add Economic Preference Colors to Outcomes in the Bootstrap ICE Distribution of Uncertainty
- that also lie within an ICE Statistical Confidence Wedge
-}
+\title{Add Economic Preference Colors to Bootstrap Uncertainty Scatters within a Confidence Wedge}
 \description{Assuming x is an object of class ICEcolor, the default invocation of plot(x)
  recolors the default alias display of the points within the bootstrap distribution of ICE
  uncertainty that are within its statistical confidence wedge.  An invocation of the form
- plot(x, alibi=TRUE) recolors the alibi display.  When ready, click within this graphics
- window to display a Histogram of all the Economic Preference values falling within the
- ICE Statistical Confidence Wedge.  
+ plot(x, alibi=TRUE) recolors the alibi display.  When ready, the user should click within
+ this graphics window to display a Histogram of all the Economic Preference values falling
+ within the ICE Statistical Confidence Wedge.  
 }
 \usage{
   \method{plot}{ICEcolor}(x, alibi = FALSE, \dots)
@@ -46,7 +43,7 @@
   this dashed line will thus not bisect the North-East and South-West ICE quadrants unless lambda
   = 1.
 }
-\value{ NULL }
+\value{NULL}
 \references{
  Cook JR, Heyse JF.  Use of an angular transformation for ratio estimation in cost-effectiveness
  analysis.  \emph{Statistics in Medicine}  2000; \bold{19}: 2989-3003.
@@ -56,14 +53,14 @@
  Association.  2002.
  
  Obenchain RL.  ICE Preference Maps: Nonlinear Generalizations of Net Benefit and Acceptability.
- \emph{Lilly US Health Economics White Paper.} 2007; 52 pages.
+ \emph{Health Serv Outcomes Res Method}  2008; \bold{8}: 31-56. DOI 10.1007/s10742-007-0027-2.
+ Open Access.
 }
-\author{Bob Obenchain <softrx@iquest.net>}
+\author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEcolor}}, \code{\link{ICEscale}} and \code{\link{ICEwedge}}.}
 \examples{
   data(dpwdg) 
   dpcol <- ICEcolor(dpwdg)
-  dpcol
   plot(dpcol)
   plot(dpcol, alibi=TRUE)
 }

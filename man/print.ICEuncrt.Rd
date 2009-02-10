@@ -23,14 +23,14 @@
   \item{\dots}{Optional; argument(s) passed on to plot().}
 }
 \details{After a single call to ICEuncrt() for an initial value of the Shadow Price of Health,
-  lambda, and an initial choice of display unit, cost or effe, multiple calls to
-  print.ICEuncrt() or plot.ICEuncrt() are usually made.  Because the bootstrap distribution of
-  ICE uncertainty is equivariant under changes in lambda, it is much faster to transform an
-  existing Bootstrap ICE Uncertainty Distribution than to generate a new one for a different
-  value of lambda.  The print.ICEuncrt() and plot.ICEuncrt() functions thus have 2 special
-  parameters, lfact and swa, that can change lambda and switch the units of measurement,
-  respectively, without actually regenerating the bootstrap distribution via a new call to
-  ICEuncrt(). 
+  lambda, and an initial choice of common display unit (cost or effe), multiple print() and/or
+  plot() calls are usually made.  Because the bootstrap distribution of ICE uncertainty is
+  equivariant under changes in lambda, it is much faster to transform an existing Bootstrap
+  ICE Uncertainty Distribution than to generate a new one for a different value of lambda.
+  
+  The print.ICEuncrt() and plot.ICEuncrt() functions thus have 2 special parameters, lfact and
+  swa, that can change lambda and switch the units of measurement, respectively, without
+  actually regenerating the bootstrap distribution via a new call to ICEuncrt(). 
 }
 \value{
   Object of class ICEuncrt containing a possibly TRANSFORMED output list with items:
@@ -52,7 +52,7 @@
 
  Obenchain RL.  ICEplane: a windows application for incremental cost-effectiveness (ICE)
  statistical inference. Copyright (c) \bold{Pharmaceutical Research and Manufacturers of America}
- (PhRMA.)   http://www.math.iupui.edu/~indyasa/bobodown.htm   1997--2007.
+ (PhRMA.)   http://members.iquest.net/~softrx/  1997--2007.
 
  Obenchain RL.  Resampling and multiplicity in cost-effectiveness inference.  \emph{Journal of
  Biopharmaceutical Statistics} 1999; \bold{9(4)}: 563--582.
@@ -60,7 +60,7 @@
  Cook JR, Heyse JF.  Use of an angular transformation for ratio estimation in cost-effectiveness
  analysis.  \emph{Statistics in Medicine}  2000; \bold{19}: 2989-3003.
 }
-\author{Bob Obenchain <softrx@iquest.net>}
+\author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEuncrt}}, \code{\link{ICEscale}} and \code{\link{ICEwedge}}.}
 \examples{
   data(dpunc)
@@ -68,4 +68,4 @@
   # Transformation of bootstrap distributions is fast.
   dpuncX <- print(dpunc, lfact=10)
 }
-\keyword{methods}
+\keyword{methods} 
