@@ -55,7 +55,7 @@
   major depressive disorder: results from a randomized, double blind clinical trial. \emph{Int
   Clin Psychopharmacol} 2000; \bold{15}: 107--113.
   
-  Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
+  Obenchain RL.  \bold{ICEinR.pdf}  ICEinfer package vignette. 2009; 32 pages.
   
   Owen AB.  \emph{Empirical Likelihood}  New York: Chapman and Hall/CRC.  2001.  
 }

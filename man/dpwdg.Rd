@@ -33,7 +33,7 @@
   }
 }
 \references{
-  Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
+  Obenchain RL.  \bold{ICEinR.pdf}  ICEinfer package vignette. 2009; 32 pages.
 }
 \examples{
     # Intermediate ICEinfer Output List for the dulxparx dataset...

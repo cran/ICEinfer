@@ -46,7 +46,7 @@
   confidence levels:  three degrees of dominance.  \emph{J Biopharm Stat}  2005; \bold{15(3)}:
   419--436.
 
-  Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
+  Obenchain RL.  \bold{ICEinR.pdf}  ICEinfer package vignette. 2009; 32 pages.
   
   Schoenbaum M, Unutzer J, Sherbourne C, Duan N, Rubenstein LV, Miranda J, Meredith LS, Carney
   MF, Wells K.  Cost-effectiveness of practice-initiated quality improvement for depression:

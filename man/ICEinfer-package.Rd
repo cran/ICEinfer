@@ -20,8 +20,8 @@
   \tabular{ll}{
   Package: \tab ICEinfer\cr
   Type: \tab Package\cr
-  Version: \tab 0.2\cr
-  Date: \tab 2009-02-10\cr
+  Version: \tab 1.0-0\cr
+  Date: \tab 2009-06-30\cr
   License: \tab GNU GENERAL PUBLIC LICENSE, Version 2, June 1991\cr
   }
 Statistical inference using functions from the ICEinfer package usually start
@@ -69,9 +69,10 @@ effectiveness of two treatments for the same disease / condition.
  Acceptability. \emph{Health Serv Outcomes Res Method}  2008; \bold{8}: 31-56. DOI 
  10.1007/s10742-007-0027-2. Open Access.
  
- Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
+ Obenchain RL.  \bold{ICEinR.pdf}  ICEinfer package vignette. 2009; 32 pages.
 }
 \keyword{package}
 \examples{
   demo(dulxparx)
+  vignette("ICEinR")
 }

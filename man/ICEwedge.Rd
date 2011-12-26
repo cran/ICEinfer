@@ -61,7 +61,7 @@ ICEwedge(ICEu, lfact = 1, conf = 0.95)
  \emph{Health Serv Outcomes Res Method}  2008; \bold{8}: 31-56. DOI 10.1007/s10742-007-0027-2.
  Open Access.
  
- Obenchain RL.  \bold{ICEinR.pdf}  ../R\_HOME/library/ICEinfer  2009; 30 pages.
+ Obenchain RL.  \bold{ICEinR.pdf}  ICEinfer package vignette. 2009; 32 pages.
 }
 \author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEuncrt}} and \code{\link{ICEcolor}}}
