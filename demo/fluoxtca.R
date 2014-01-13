@@ -2,7 +2,7 @@ require(ICEinfer)
 # input the fluoxtca data of Obenchain et al. (1997).
 data(fluoxtca)
 # Effectiveness = stable, Cost = cost, Trtm = fluox where
-# fluox = 1 ==> fluoxetine and fluox = 0 ==> TCA or HCA
+# fluox = 1 ==> fluoxetine treatment and fluox = 0 ==> TCA or HCA
 #
 # Display of Lambda => Shadow Price Summary Statistics...
 
@@ -10,7 +10,7 @@ ICEscale(fluoxtca, fluox, stable, cost)
 ICEscale(fluoxtca, fluox, stable, cost, lambda=10000)
 
 # Bootstrap ICE Uncertainty calculations can be lengthy...
-ftunc <- ICEuncrt(fluoxtca, fluox, stable, cost, lambda=10000)
+ftunc <- ICEuncrt(fluoxtca, fluox, stable, cost, R = 10000, lambda=10000)
 ftunc
 
 # Display the Bootstrap ICE Uncertainty Distribution...\n")

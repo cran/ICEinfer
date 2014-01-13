@@ -68,7 +68,7 @@
  Cook JR, Heyse JF.  Use of an angular transformation for ratio estimation in cost-effectiveness
  analysis.  \emph{Statistics in Medicine}  2000; \bold{19}: 2989-3003.
 }
-\author{Bob Obenchain <softrx@iquest.net>}
+\author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEuncrt}}, \code{\link{ICEscale}} and \code{\link{ICEwedge}}.}
 \examples{
   data(dpunc)

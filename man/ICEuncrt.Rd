@@ -63,7 +63,8 @@ ICEuncrt(df, trtm, xeffe, ycost, lambda = 1, unit = cost, R = 25000, seed = 0)
  Obenchain RL.  Resampling and multiplicity in cost-effectiveness inference.  \emph{Journal of
  Biopharmaceutical Statistics} 1999; \bold{9(4)}: 563-582.
  
- Obenchain RL.  \bold{ICEinR.pdf}  ICEinfer package vignette. 2009; 32 pages.
+ Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
+ stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
 }
 \author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEscale}}, \code{\link{plot.ICEuncrt}} and \code{\link{print.ICEuncrt}}}

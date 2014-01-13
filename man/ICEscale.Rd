@@ -60,7 +60,8 @@ ICEscale(df, trtm, xeffe, ycost, lambda = 1, unit = cost)
  statistical inference. Copyright (c) \bold{Pharmaceutical Research and Manufacturers of America}
  (PhRMA.)   http://www.math.iupui.edu/~indyasa/bobodown.htm   1997--2007.
  
- Obenchain RL.  \bold{ICEinR.pdf}  ICEinfer package vignette. 2009; 32 pages.
+ Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
+ stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
  
  Cook JR, Heyse JF.  Use of an angular transformation for ratio estimation in cost-effectiveness
  analysis.  \emph{Statistics in Medicine}  2000; \bold{19}: 2989-3003.

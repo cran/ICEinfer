@@ -2,14 +2,14 @@ require(ICEinfer)
 # input the fluoxpin data of Sacristan et al. (2000).
 data(fluoxpin)
 # Effectiveness = respond, Cost = cost, trtm = flxpin where
-# flxpin = 1 ==> fluoxetine plus pindolol and flxpin = 0 ==> fluoxetine plus placebo
+# flxpin = 1 ==> fluoxetine plus pindolol and flxpin = 0 ==> fluoxetine alone
 
 cat("\n Display of Lambda => Shadow Price Summary Statistics...\n")
 ICEscale(fluoxpin, flxpin, respond, cost)
 ICEscale(fluoxpin, flxpin, respond, cost, lambda=100000)
 
 cat("\nBootstrap ICE Uncertainty calculations can be lengthy...\n")
-fpunc <<- ICEuncrt(fluoxpin, flxpin, respond, cost, lambda=100000)
+fpunc <<- ICEuncrt(fluoxpin, flxpin, respond, cost, R = 10000, lambda=100000)
 fpunc
 
 cat("\nDisplay the Bootstrap ICE Uncertainty Distribution...\n")

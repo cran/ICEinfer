@@ -35,7 +35,7 @@
   economics: a method for prospective health resource data collection.  \emph{Pharmacoeconomics}
   1992; \bold{1(5)}: 370--376.
 
-	Goldstein DJ, Lu Y, Detke MJ, Wiltse C, Mallincrodt C, Demitrack MA.  Duloxetine in the
+  Goldstein DJ, Lu Y, Detke MJ, Wiltse C, Mallincrodt C, Demitrack MA.  Duloxetine in the
   treatment of depression - A double-blind, placebo-controlled comparison with paroxetine.
   \emph{J Clin Psychopharmacol}  2004;  \bold{24}: 389--399.
   
@@ -46,7 +46,8 @@
   confidence levels:  three degrees of dominance.  \emph{J Biopharm Stat}  2005; \bold{15(3)}:
   419--436.
 
-  Obenchain RL.  \bold{ICEinR.pdf}  ICEinfer package vignette. 2009; 32 pages.
+  Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
+  stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
   
   Schoenbaum M, Unutzer J, Sherbourne C, Duan N, Rubenstein LV, Miranda J, Meredith LS, Carney
   MF, Wells K.  Cost-effectiveness of practice-initiated quality improvement for depression:

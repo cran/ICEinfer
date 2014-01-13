@@ -2,14 +2,14 @@ require(ICEinfer)
 # input the dulxparx data of Obenchain et al. (2000).
 data(dulxparx)
 # Effectiveness = idb, Cost = ru, trtm = dulx where
-# dulx = 1 ==> Duloxetine and dulx = 0 ==> Paroxetine
+# dulx = 1 ==> Duloxetine treatment and dulx = 0 ==> Paroxetine treatment
 #
 # Display of Lambda => Shadow Price Summary Statistics...
 ICEscale(dulxparx, dulx, idb, ru)
 ICEscale(dulxparx, dulx, idb, ru, lambda=0.26)
 
 # Bootstrap ICE Uncertainty calculations can be time consuming...
-dpunc <- ICEuncrt(dulxparx, dulx, idb, ru, lambda=0.26)
+dpunc <- ICEuncrt(dulxparx, dulx, idb, ru, R = 10000, lambda=0.26)
 dpunc
 
 # Display the Bootstrap ICE Uncertainty Distribution...

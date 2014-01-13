@@ -45,9 +45,10 @@
   statistical inference. Copyright(c) Pharmaceutical Research and Manufacturers of America
   (PhRMA.)   \bold{http://members.iquest.net/~softrx/}  Revised 1997--2007.
   
-  Obenchain RL. \bold{ICEinR.pdf}  ICEinfer package vignette. 2009; 32 pages.
+  Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
+  stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
   
-  Sclar DA, Robison LM, Skaer TL, Legg RF, Nemec NL, Galin RS, Hugher TE, Buesching DP.
+  Sclar DA, Robinson LM, Skaer TL, Legg RF, Nemec NL, Galin RS, Hugher TE, Buesching DP.
   Antidepressant pharmacotherapy: economic outcomes in a health maintenance organization.
   \emph{Clin Ther} 1994; \bold{16}: 715--730.
 }
