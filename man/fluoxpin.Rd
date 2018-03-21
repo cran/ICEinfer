@@ -37,7 +37,7 @@
  differences appears to end somewhat abruptly near the horizontal axis at DeltaCost = 0, rather
  than have a long upwards tail like its downwards tail.  (iii)  The equal density contours of the
  bivariate Bootstrap Distribution appear to NOT be elliptical.  This third point can be
- dramaticaly illustrated by computing the Owen Empirical Likelihood contour that passes through
+ dramatically illustrated by computing the Owen Empirical Likelihood contour that passes through
  the origin of the ICE plane.
 }
 \references{
@@ -55,13 +55,10 @@
   major depressive disorder: results from a randomized, double blind clinical trial. \emph{Int
   Clin Psychopharmacol} 2000; \bold{15}: 107--113.
   
-  Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
-  stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
-  
   Owen AB.  \emph{Empirical Likelihood}  New York: Chapman and Hall/CRC.  2001.  
 }
 \examples{
-    # Demo of ICEinfer functionality on the fluoxpin dataset...
-    demo(fluoxpin)
+    data(fluoxpin)
+    ICEscale(fluoxpin, flxpin, respond, cost)
 }
-\keyword{datasets} 
+\keyword{datasets}

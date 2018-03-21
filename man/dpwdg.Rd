@@ -13,7 +13,7 @@
     \item{ICEinp}{Name of the ICEuncrt object input to ICEwedge().}
     \item{lambda}{Positive value of lfact * ICEu\$lambda}
     \item{lfact}{Positive Multiplier for the ICEu\$lambda value input to ICEwedge().}  
-    \item{unit}{Saved value of unit, cost or effe, input to ICEuncrt.}
+    \item{ceunit}{Saved value of ceunit ("cost" or "effe") input to ICEuncrt.}
     \item{conf}{Statistical Confidence Level within [0.50, 0.99] input to ICEwedge.}  
     \item{R}{Saved integer value for number of bootstrap replications input to ICEuncrt.}
     \item{axys}{R x 4 data.frame with ICE Angle in column 1, bootstrap resampled values of
@@ -31,10 +31,6 @@
     \item{ymax}{Alias plots of ICEwedge have vertical range [-ymax, +ymax].}
     \item{ab}{ICE angle computation perspective of alibi or alias.}
   }
-}
-\references{
- Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
- stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
 }
 \examples{
     # Intermediate ICEinfer Output List for the dulxparx dataset...

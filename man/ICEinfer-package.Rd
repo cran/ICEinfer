@@ -20,8 +20,8 @@
   \tabular{ll}{
   Package: \tab ICEinfer\cr
   Type: \tab Package\cr
-  Version: \tab 1.0-0\cr
-  Date: \tab 2009-06-30\cr
+  Version: \tab 1.0-4\cr
+  Date: \tab 2018-03-19\cr
   License: \tab GNU GENERAL PUBLIC LICENSE, Version 2, June 1991\cr
   }
 Statistical inference using functions from the ICEinfer package usually start
@@ -35,7 +35,7 @@ switching between cost and effe units.
 
 Next, a single call to ICEwedge() yields the equivariant, wedge-shaped region
 of specified statistical confidence within [.50, .99] ...by computing ICE Angle
-Order Statistics around a circle centered at the ICE Origin, (DeltaEffe, DeltaCost)
+Order Statistics around a circle with center at the ICE Origin: (DeltaEffe, DeltaCost)
 = (0, 0).
 
 Researchers wishing to view alternative ICE Acceptability Curves would then envoke
@@ -68,11 +68,5 @@ effectiveness of two treatments for the same disease / condition.
  Obenchain RL.  ICE Preference Maps:  Nonlinear Generalizations of Net Benefit and
  Acceptability. \emph{Health Serv Outcomes Res Method}  2008; \bold{8}: 31-56. DOI 
  10.1007/s10742-007-0027-2. Open Access.
- 
- Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
- stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
 }
 \keyword{package}
-\examples{
-  demo(dulxparx)
-}

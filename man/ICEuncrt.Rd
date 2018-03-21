@@ -13,7 +13,7 @@
  overall expected effectiveness and cost for that treatment.
  }
 \usage{
-ICEuncrt(df, trtm, xeffe, ycost, lambda = 1, unit = cost, R = 25000, seed = 0)
+ICEuncrt(df, trtm, xeffe, ycost, lambda = 1, ceunit = "cost", R = 25000, seed = 0)
 }
 \arguments{
   \item{df}{Required; Existing data.frame object containing the trtm, xeffe and ycost variables.}
@@ -22,7 +22,7 @@ ICEuncrt(df, trtm, xeffe, ycost, lambda = 1, unit = cost, R = 25000, seed = 0)
   \item{xeffe}{Required; Name of the treatment effectiveness variable within the df data.frame.}
   \item{ycost}{Required; Name of the treatment cost variable within the df data.frame.}
   \item{lambda}{Optional; \code{lambda} strictly positive value for the Shadow Price of Health.}
-  \item{unit}{Optional; \code{unit} character string containing either cost (default) or effe.}
+  \item{ceunit}{Optional; \code{ceunit} character string containing either cost (default) or effe.}
   \item{R}{Optional; \code{R} positive integer value for the number of Bootstrap Replications
    desired.  Minimum allowed value is 50; default value is 25000.}
   \item{seed}{Optional; \code{seed} is an integer between 0 and 25000.  A seed value of 0 causes
@@ -35,14 +35,14 @@ ICEuncrt(df, trtm, xeffe, ycost, lambda = 1, unit = cost, R = 25000, seed = 0)
   distribution of ICE uncertainty is equivariant under changes in lambda, it is much faster to
   transform an existing bootstrap distribution than to generate a new one for a different value
   of lambda.  The print.ICEuncrt() and plot.ICEuncrt() functions thus have 2 special parameters,
-  lfact and swa, that can change lambda and switch the units of measurement, respectively, without
+  lfact and swa, that can change lambda and switch the ceunit of measurement, respectively, without
   actually generating a new bootstrap distribution via a call to ICEuncrt(). 
 }
 \value{
   Object of class ICEuncrt containing an output list with the following items:
   \item{df}{Saved value of the name of the data.frame input to ICEuncrt.}
   \item{lambda}{Saved positive value of lambda input to ICEuncrt.}
-  \item{unit}{Saved value of unit, cost or effe, input to ICEuncrt.}
+  \item{ceunit}{Saved value of ceunit (cost or effe) input to ICEuncrt.}
   \item{R}{Saved integer value for number of bootstrap replications input to ICEuncrt.}
   \item{trtm}{Saved name of the treatment indicator within the df data.frame.}
   \item{xeffe}{Saved name of the treatment effectiveness variable within the df data.frame.}
@@ -53,18 +53,11 @@ ICEuncrt(df, trtm, xeffe, ycost, lambda = 1, unit = cost, R = 25000, seed = 0)
   \item{seed}{Saved value of the seed used to start pseudo random number generation.}
 }
 \references{
- Obenchain RL.  ICEplane: a windows application for incremental cost-effectiveness (ICE)
- statistical inference. Copyright (c) \bold{Pharmaceutical Research and Manufacturers of America}
- (PhRMA.)   http://members.iquest.net/~softrx/  1997-2007.
- 
  Obenchain RL, Melfi CA, Croghan TW, Buesching DP. Bootstrap analyses of cost-effectiveness
  in antidepressant pharmacotherapy.  \emph{PharmacoEconomics} 1997; \bold{17}: 1200-1206.
 
  Obenchain RL.  Resampling and multiplicity in cost-effectiveness inference.  \emph{Journal of
  Biopharmaceutical Statistics} 1999; \bold{9(4)}: 563-582.
- 
- Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
- stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
 }
 \author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEscale}}, \code{\link{plot.ICEuncrt}} and \code{\link{print.ICEuncrt}}}

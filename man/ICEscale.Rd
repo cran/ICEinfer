@@ -16,7 +16,7 @@
  for that treatment.
 }
 \usage{
-ICEscale(df, trtm, xeffe, ycost, lambda = 1, unit = cost)
+ICEscale(df, trtm, xeffe, ycost, lambda = 1, ceunit = "cost")
 }
 \arguments{
   \item{df}{Required; Existing data.frame object containing the trtm, xeffe and ycost variables.}
@@ -25,7 +25,7 @@ ICEscale(df, trtm, xeffe, ycost, lambda = 1, unit = cost)
   \item{xeffe}{Required; Name of the treatment effectiveness variable within the df data.frame.}
   \item{ycost}{Required; Name of the treatment cost variable within the df data.frame.}
   \item{lambda}{Optional; \code{lambda} strictly positive value for the Shadow Price of Health.}
-  \item{unit}{Optional; \code{unit} character string containing either cost (default) or effe.}
+  \item{ceunit}{Optional; \code{ceunit} character string containing either cost (default) or effe.}
 }
 \details{
   After an initial call with the default value of lambda = 1, multiple additional calls to
@@ -33,8 +33,8 @@ ICEscale(df, trtm, xeffe, ycost, lambda = 1, unit = cost)
   analyses using other functions from the ICEinfer package.  For example, the statistical
   choice for lambda assures that the DeltaEffe and DeltaCost mean treatment differences (new
   minus std) will have approximately equal variability when expressed in either cost or
-  effe units.  The power of ten value of lambda that is closest to the statistical value
-  for lambda assures use of units that, except for the position of the decimal point, are identical
+  effe ceunits.  The power of ten value of lambda that is closest to the statistical value
+  for lambda assures use of ceunits that, except for the position of the decimal point, are identical
   to the cost/effectiveness ratio implied by the scales in which data values are stored within
   the input data.frame.
 }
@@ -55,13 +55,6 @@ ICEscale(df, trtm, xeffe, ycost, lambda = 1, unit = cost)
 \references{
  Obenchain RL.  Issues and algorithms in cost-effectiveness inference.  \emph{Biopharmaceutical
  Reports} 1997; \bold{5(2)}: 1-7.  Washington, DC: American Statistical Association.
-
- Obenchain RL.  ICEplane: a windows application for incremental cost-effectiveness (ICE)
- statistical inference. Copyright (c) \bold{Pharmaceutical Research and Manufacturers of America}
- (PhRMA.)   http://www.math.iupui.edu/~indyasa/bobodown.htm   1997--2007.
- 
- Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
- stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
  
  Cook JR, Heyse JF.  Use of an angular transformation for ratio estimation in cost-effectiveness
  analysis.  \emph{Statistics in Medicine}  2000; \bold{19}: 2989-3003.

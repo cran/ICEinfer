@@ -58,17 +58,13 @@
  Obenchain RL.  Issues and algorithms in cost-effectiveness inference.  \emph{Biopharmaceutical
  Reports} 1997; \bold{5(2)}: 1-7.  Washington, DC: American Statistical Association.
 
- Obenchain RL.  ICEplane: a windows application for incremental cost-effectiveness (ICE)
- statistical inference. Copyright (c) \bold{Pharmaceutical Research and Manufacturers of America}
- (PhRMA.)   http://members.iquest.net/~softrx/  1997--2007.
-
  Obenchain RL.  Resampling and multiplicity in cost-effectiveness inference.  \emph{Journal of
  Biopharmaceutical Statistics} 1999; \bold{9(4)}: 563--582.
  
  Cook JR, Heyse JF.  Use of an angular transformation for ratio estimation in cost-effectiveness
  analysis.  \emph{Statistics in Medicine}  2000; \bold{19}: 2989-3003.
 }
-\author{Bob Obenchain <wizbob@att.net>}
+\author{Bob Obenchain <softrx@iquest.net>}
 \seealso{\code{\link{ICEuncrt}}, \code{\link{ICEscale}} and \code{\link{ICEwedge}}.}
 \examples{
   data(dpunc)

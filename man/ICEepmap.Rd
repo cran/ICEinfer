@@ -71,9 +71,6 @@
  Obenchain RL.  ICE Preference Maps: Nonlinear Generalizations of Net Benefit and Acceptability.
  \emph{Health Serv Outcomes Res Method}  2008; \bold{8}: 31-56. DOI 10.1007/s10742-007-0027-2.
  Open Access.
- 
- Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
- stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
 }
 \author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{plot.ICEepmap}} and \code{\link{print.ICEepmap}}}

@@ -45,16 +45,13 @@
   Obenchain RL, Robinson RL, Swindle RW.  Cost-effectiveness inferences from bootstrap quadrant
   confidence levels:  three degrees of dominance.  \emph{J Biopharm Stat}  2005; \bold{15(3)}:
   419--436.
-
-  Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
-  stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
   
   Schoenbaum M, Unutzer J, Sherbourne C, Duan N, Rubenstein LV, Miranda J, Meredith LS, Carney
   MF, Wells K.  Cost-effectiveness of practice-initiated quality improvement for depression:
   results of a randomized controlled trial. \emph{JAMA} 2001; \bold{286(11)}: 1325--1330.
 }
 \examples{
-    # Demo of ICEinfer functionality on the dulxparx dataset...
-    demo(dulxparx)
+    data(dulxparx)
+    ICEscale(dulxparx, dulx, idb, ru)
 }
 \keyword{datasets}

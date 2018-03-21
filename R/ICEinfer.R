@@ -4,7 +4,7 @@ function (ICEw)
     if (missing(ICEw) || !inherits(ICEw, "ICEwedge")) 
         stop("The first argument to ICEalice must be an ICEwedge object.")
     lambda <- ICEw$lambda
-    unit <- ICEw$unit
+    ceunit <- ICEw$ceunit
     ia <- as.vector(ICEw$axys[, 1])
     n <- length(ia)
     a11 <- c(45, 52.5, 60, 67.5, 75, 82.5, 90, 97.5, 105, 112.5, 
@@ -35,7 +35,7 @@ function (ICEw)
     neqcl <- neqcl/n
     swqcl <- swqcl/n
     qcl <- round(100 * as.vector(cbind(acc[1,5], neqcl, swqcl, 1-acc[13,5])), digits = 1)
-    ICEaccol <- list(lambda = lambda, unit = unit, ia = ia, acc = acc, qcl = qcl)
+    ICEaccol <- list(lambda = lambda, ceunit = ceunit, ia = ia, acc = acc, qcl = qcl)
     class(ICEaccol) <- "ICEalice"
     ICEaccol
 }
@@ -70,13 +70,13 @@ function (ICEw, lfact = 1, beta = 1, gamma = 3 + 2 * sqrt(2))
         stop("The gamma = eta*beta argument to ICEcolor must be strictly positive.")
     lambda <- lfact * ICEw$lambda
     t1 <- ICEw$t1
-    unit <- ICEw$unit
+    ceunit <- ICEw$ceunit
     conf <- ICEw$conf
     axys <- ICEw$axys
     xmax <- ICEw$xmax
     ymax <- ICEw$ymax
     if (lfact != 1) {
-        if (unit == "cost") {
+        if (ceunit == "cost") {
             t1[1] <- t1[1] * lfact
             axys[, 2] <- axys[, 2] * lfact
             xmax <- xmax * lfact
@@ -92,7 +92,7 @@ function (ICEw, lfact = 1, beta = 1, gamma = 3 + 2 * sqrt(2))
     abcos <- abs(dif)/r
     pref <- sign(dif) * r^beta * abcos^gamma
     ICEclwol <- list(lambda = lambda, beta = beta, gamma = gamma, 
-        unit = unit, axys = axys, conf = conf, pref = pref, xmax = xmax, 
+        ceunit = ceunit, axys = axys, conf = conf, pref = pref, xmax = xmax, 
         ymax = ymax, jlo = ICEw$jlo, kup = ICEw$kup)
     class(ICEclwol) <- "ICEcolor"
     ICEclwol
@@ -141,7 +141,7 @@ function (n1, n2)
     idx
 }
 `ICEscale` <-
-function (df, trtm, xeffe, ycost, lambda = 1, unit = "cost") 
+function (df, trtm, xeffe, ycost, lambda = 1, ceunit = "cost") 
 {
     if (missing(df) || !inherits(df, "data.frame")) 
         stop("The first argument to ICEscale must be an existing Data Frame.")
@@ -164,10 +164,10 @@ function (df, trtm, xeffe, ycost, lambda = 1, unit = "cost")
         stop("Cost measure must be an existing Data Frame variable.")
     if (lambda <= 0) 
         stop("The lambda argument to ICEscale must be strictly positive.")
-    if (unit != "effe") 
-        unit <- "cost"
+    if (ceunit != "effe") 
+        ceunit <- "cost"
     effcst <- na.omit(df[, c(trtm, xeffe, ycost)])
-    if (unit != "cost") 
+    if (ceunit != "cost") 
         effcst[, 3] <- effcst[, 3]/lambda
     else effcst[, 2] <- effcst[, 2] * lambda
     names(effcst) <- c("trtm", "effe", "cost")
@@ -183,22 +183,22 @@ function (df, trtm, xeffe, ycost, lambda = 1, unit = "cost")
         2])/nstd), sqrt(var(effcst[rownew, 3])/nnew + var(effcst[rowstd, 
         3])/nstd))
     ICEsclol <- list(trtm = trtm, xeffe = xeffe, ycost = ycost, 
-        effcst = effcst, lambda = lambda, unit = unit, t1 = t1, 
+        effcst = effcst, lambda = lambda, ceunit = ceunit, t1 = t1, 
         s1 = s1)
     class(ICEsclol) <- "ICEscale"
     ICEsclol
 }
 `ICEuncrt` <-
-function (df, trtm, xeffe, ycost, lambda = 1, unit = "cost", 
+function (df, trtm, xeffe, ycost, lambda = 1, ceunit = "cost", 
     R = 25000, seed = 0) 
 {
     if (missing(df) || !inherits(df, "data.frame")) 
         stop("The first argument to ICEuncrt must be an existing Data Frame.")
     if (lambda <= 0) 
         stop("The lambda argument to ICEuncrt must be strictly positive.")
-    if (unit != "effe") 
-        unit <- "cost"
-    ICEuncol <- list(df = deparse(substitute(df)), lambda = lambda, unit = unit, R = R)
+    if (ceunit != "effe") 
+        ceunit <- "cost"
+    ICEuncol <- list(df = deparse(substitute(df)), lambda = lambda, ceunit = ceunit, R = R)
     if (missing(trtm)) 
         stop("The Second argument to ICEuncrt must name the Treatment factor.")
     trtm <- deparse(substitute(trtm))
@@ -219,7 +219,7 @@ function (df, trtm, xeffe, ycost, lambda = 1, unit = "cost",
     effcst <- na.omit(df[, c(trtm, xeffe, ycost)])
     names(effcst) <- c("trtm", "effe", "cost")
     effcst <- effcst[do.call(order, effcst), ]
-    if (unit != "cost") 
+    if (ceunit != "cost") 
         effcst[, 3] <- effcst[, 3]/lambda
     else effcst[, 2] <- effcst[, 2] * lambda
     if (R > 25000) 
@@ -255,7 +255,7 @@ function (ICEu, lfact = 1, conf = 0.95)
         stop("The lfact argument to ICEwedge must be non-negative.")
     if (conf < 0.5 || conf > 0.99) 
         stop("Wedge Confidence Level must be within [0.50, 0.99].")
-    unit <- ICEu$unit
+    ceunit <- ICEu$ceunit
     R <- ICEu$R
     t <- ICEu$t
     t1 <- ICEu$t1
@@ -267,7 +267,7 @@ function (ICEu, lfact = 1, conf = 0.95)
         }
     lambda <- lfact * ICEu$lambda
     if (lfact != 1) {
-        if (unit == "cost") {
+        if (ceunit == "cost") {
             t1[1] <- t1[1] * lfact
             t[, 1] <- t[, 1] * lfact
         }
@@ -277,7 +277,7 @@ function (ICEu, lfact = 1, conf = 0.95)
         }
     }
     ICEwdgol <- list(ICEinp = deparse(substitute(ICEu)), lambda = lambda, 
-        lfact = lfact, unit = unit, conf = conf)
+        lfact = lfact, ceunit = ceunit, conf = conf)
     ia1 <- ICEangle(t1[1], t1[2])
     ia <- rep(90, R)
     for (i in 1:R) ia[i] <- ICEangle(t[i, 1], t[i, 2])
@@ -459,12 +459,12 @@ function (x, lfact = 1, swu = FALSE, alibi = FALSE, ...)
     if (lfact > 0) 
         lambda <- lfact * x$lambda
     else lambda <- x$lambda
-    unit <- x$unit
-    if (unit != "cost") 
-        unit <- "effe"
+    ceunit <- x$ceunit
+    if (ceunit != "cost") 
+        ceunit <- "effe"
     if (swu) {
-        if (unit == "cost") { 
-            unit <- "effe"
+        if (ceunit == "cost") { 
+            ceunit <- "effe"
             if (x$lambda != 1) {
                 x$t1[1] <- x$t1[1] / x$lambda
                 x$t[, 1] <- x$t[, 1] / x$lambda
@@ -473,7 +473,7 @@ function (x, lfact = 1, swu = FALSE, alibi = FALSE, ...)
                 }
             }
         else {
-            unit <- "cost"
+            ceunit <- "cost"
             if (x$lambda != 1) {
                 x$t1[1] <- x$t1[1] * x$lambda
                 x$t[, 1] <- x$t[, 1] * x$lambda
@@ -484,7 +484,7 @@ function (x, lfact = 1, swu = FALSE, alibi = FALSE, ...)
         }
     if (lfact != 1) {
         x$lambda <- lambda
-        if (unit == "cost") {
+        if (ceunit == "cost") {
             x$t1[1] <- x$t1[1] * lfact
             x$t[, 1] <- x$t[, 1] * lfact
         }
@@ -506,7 +506,7 @@ function (x, lfact = 1, swu = FALSE, alibi = FALSE, ...)
         abline(c(0, 1))
         title(main = paste("ICE Alias Uncertainty for Lambda =", 
             lambda), xlab = "Effectiveness Difference", ylab = "Cost Difference", 
-            sub = paste("Units =", unit, ": Bootstrap Reps =", x$R))
+            sub = paste("Units =", ceunit, ": Bootstrap Reps =", x$R))
         }
     else {
         amax <- max(emax, cmax)
@@ -520,9 +520,9 @@ function (x, lfact = 1, swu = FALSE, alibi = FALSE, ...)
         abline(c(0, lambda))
         title(main = paste("ICE Alibi Uncertainty for Lambda =", 
             lambda), xlab = "Effectiveness Difference", ylab = "Cost Difference", 
-            sub = paste("Units =", unit, ": Bootstrap Reps =", x$R))
+            sub = paste("Units =", ceunit, ": Bootstrap Reps =", x$R))
         }
-    ICEuncol <- list(df = x$df, lambda = lambda, unit = unit, R = x$R,
+    ICEuncol <- list(df = x$df, lambda = lambda, ceunit = ceunit, R = x$R,
         trtm = x$trtm, xeffe = x$xeffe, ycost = x$ycost, effcst = x$effcst,
         t1 = x$t1, t = x$t, seed = x$seed)
     class(ICEuncol) <- "ICEuncrt"
@@ -558,7 +558,7 @@ function (x, ...)
     par(lty = 1)
     title(main = paste("Wedge-Shaped ICE Region with Confidence =", 
         100 * x$conf, "%"), xlab = "Effectiveness Difference", 
-        ylab = "Cost Difference", sub = paste("Units =", x$unit, 
+        ylab = "Cost Difference", sub = paste("Units =", x$ceunit, 
             "; lambda =", round(x$lambda, digits = 3), "; Angles =", x$ab))
 }
 `print.ICEalice` <-
@@ -567,7 +567,7 @@ function (x, ...)
     cat("\nICEalice: Acceptability Curves from Bootstrap Uncertainty Distribution...\n")
     cat(paste("\nShadow Price of Health, lambda =", x$lambda))
     cat(paste("\nICE Differences in both Cost and Effectiveness expressed in", 
-        x$unit, "units.\n\n"))
+        x$ceunit, "units.\n\n"))
     print(x$acc)
     cat("\nICE Quadrant Confidence Level Percentages... (SE, NE, SW, NW)\n")
     print(x$qcl) 
@@ -630,7 +630,7 @@ function (x, ...)
     cat("\nIncremental Cost-Effectiveness (ICE) Lambda Scaling Statistics\n")
     cat(paste("\nSpecified Value of Lambda   =", x$lambda))
     cat(paste("\nCost and Effe Differences are both expressed in", 
-        x$unit, "units\n"))
+        x$ceunit, "units\n"))
     cat(paste("\nEffectiveness variable Name =", x$xeffe))
     cat(paste("\n     Cost     variable Name =", x$ycost))
     cat(paste("\n  Treatment   factor   Name =", x$trtm))
@@ -661,12 +661,12 @@ function (x, lfact = 1, swu = FALSE, ...)
     if (lfact > 0) 
         lambda <- lfact * x$lambda
     else lambda <- x$lambda
-    unit <- x$unit
-    if (unit != "cost") 
-        unit <- "effe"
+    ceunit <- x$ceunit
+    if (ceunit != "cost") 
+        ceunit <- "effe"
     if (swu) {
-        if (unit == "cost") { 
-            unit <- "effe"
+        if (ceunit == "cost") { 
+            ceunit <- "effe"
             if (x$lambda != 1) {
                 x$t1[1] <- x$t1[1] / x$lambda
                 x$t[, 1] <- x$t[, 1] / x$lambda
@@ -675,7 +675,7 @@ function (x, lfact = 1, swu = FALSE, ...)
                 }
             }
         else {
-            unit <- "cost"
+            ceunit <- "cost"
             if (x$lambda != 1) {
                 x$t1[1] <- x$t1[1] * x$lambda
                 x$t[, 1] <- x$t[, 1] * x$lambda
@@ -693,10 +693,10 @@ function (x, lfact = 1, swu = FALSE, ...)
         1]))[2], "and Standard level is =", names(table(x$effcst[, 
         1]))[1], "\n"))
     cat(paste("\nCost and Effe Differences are both expressed in", 
-        unit, "units\n"))
+        ceunit, "units\n"))
     if (lfact != 1) {
         x$lambda <- lambda
-        if (unit == "cost") {
+        if (ceunit == "cost") {
             x$t1[1] <- x$t1[1] * lfact
             x$t[, 1] <- x$t[, 1] * lfact
         }
@@ -713,7 +713,7 @@ function (x, lfact = 1, swu = FALSE, ...)
         digits = 3)))
     cat(paste("\nMean Bootstrap Cost Diff =", round(mean(x$t[, 
         2]), digits = 3), "\n\n"))
-    ICEuncol <- list(df = x$df, lambda = lambda, unit = unit, R = x$R,
+    ICEuncol <- list(df = x$df, lambda = lambda, ceunit = ceunit, R = x$R,
         trtm = x$trtm, xeffe = x$xeffe, ycost = x$ycost, effcst = x$effcst,
         t1 = x$t1, t = x$t, seed = x$seed)
     class(ICEuncol) <- "ICEuncrt"
@@ -727,7 +727,7 @@ function (x, ...)
     cat(paste("\nShadow Price of Health Multiplier, lfact =", 
         x$lfact))
     cat(paste("\nICE Differences in both Cost and Effectiveness expressed in", 
-        x$unit, "units."))
+        x$ceunit, "units."))
     cat(paste("\nICE Angle of the Observed Outcome =", round(x$ia1, 
         digits = 3)))
     cat(paste("\nICE Ratio of the Observed Outcome =", round(x$t1[2]/x$t1[1], 

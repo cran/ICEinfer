@@ -44,9 +44,9 @@
 }
 \value{
   Objects of class ICEalice contain the following output list:
-  \item{lambda}{Positive numerical value for the Shadow Price of Health, lambda}
-  \item{unit}{Common unit of measurement of either cost or effe.}
-  \item{ia}{R x 1 Vector of Sorted ICE Angles.  Default value of R = 25000.}
+  \item{lambda}{Positive numerical value for the Shadow Price of Health, lambda.}
+  \item{ceunit}{Common unit of measurement - either "cost" or "effe".}
+  \item{ia}{R x 1 Vector of Sorted ICE Angles.  Default value is R = 25000.}
   \item{acc}{13 x 5 Matrix of Absolute ICEangle, WTP, VAGR Acceptability, WTA and
    ALICE statistics.}
 }
@@ -64,9 +64,6 @@
  Obenchain RL.  ICE Preference Maps: Nonlinear Generalizations of Net Benefit and Acceptability.
  \emph{Health Serv Outcomes Res Method}  2008; \bold{8}: 31-56. DOI 10.1007/s10742-007-0027-2.
  Open Access.
- 
- Obenchain RL.  \bold{ICEinR.pdf}  Vignette-like documentation for ICEinfer
- stored in the R library/ICEinfer/doc folder. 2009; 30 pages.
 }
 \author{Bob Obenchain <wizbob@att.net>}
 \seealso{\code{\link{ICEwedge}} and \code{\link{ICEcolor}}}
@@ -76,5 +73,6 @@
   dpacc <- ICEalice(dpwdg)
   # Display VAGR and ALICE acceptability curves.
   plot(dpacc)
+  dpacc
 }
 \keyword{methods}
