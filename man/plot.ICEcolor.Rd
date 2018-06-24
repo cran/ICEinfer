@@ -1,47 +1,51 @@
 \name{plot.ICEcolor}
 \alias{plot.ICEcolor}
-\title{Add Economic Preference Colors to Bootstrap Uncertainty Scatters within a Confidence Wedge}
+\title{Display Economic Preferences for ICE Outcomes within a Bootstrap Confidence Wedge}
 \description{Assuming x is an object of class ICEcolor, the default invocation of plot(x)
- recolors the default alias display of the points within the bootstrap distribution of ICE
- uncertainty that are within its statistical confidence wedge.  An invocation of the form
- plot(x, alibi=TRUE) recolors the alibi display.  When ready, the user should click within
- this graphics window to display a Histogram of all the Economic Preference values falling
- within the ICE Statistical Confidence Wedge.  
+ first displays a Histogram depicting the Distribution of Economic Preferences within an
+ ICE Confidence Wedge then applies a rainbow of colors to these same points on a display
+ of the ICE Bootstrap re-sampling Scatter. An invocation of the form plot(x, alibi=TRUE)
+ uses alibi (rather than alias) scaling when displaying the Bootstrap Scatter plot. When
+ ready, the user should press the ENTER Key to overwrite the Histogram display with the
+ Scatter plot.
 }
 \usage{
-  \method{plot}{ICEcolor}(x, alibi = FALSE, \dots)
+  \method{plot}{ICEcolor}(x, alibi = FALSE, show = "Both", \dots)
 }
 \arguments{
   \item{x}{Required; Output list object of class ICEcolor.}
-  \item{alibi}{Optional; Logical value of TRUE or FALSE to control scaling of axes.  alibi = FALSE
-   produces the default alias graphic in which points in the bootstrap uncertainty scatter are
-   held fixed in space, and changes in lambda change the scaling (tick marks) along either the
-   horizontal axis of a cost unit display or else along the vertical axis of an effe unit
-   display.  alibi = TRUE produces an alibi graphic in which the scaling (and range) is the
-   same along both axes, and changes in lambda cause the points in the bootstrap uncertainty
-   scatter to move either left or right in a cost unit display or else up or dowm in an effe
-   unit display.}
+  \item{alibi}{Optional; Logical value of TRUE or FALSE to control scaling of axes. alibi
+   = FALSE produces the default alias graphic in which points in the bootstrap uncertainty
+   scatter are held fixed in space, and changes in lambda change the scaling (tick marks)
+   along either the horizontal axis of a cost unit display or else along the vertical axis
+   of an effe unit display.  alibi = TRUE produces an alibi graphic in which the scaling
+   (and range) is the same along both axes, and changes in lambda cause the points in the
+   bootstrap uncertainty scatter to move either left or right in a cost unit display or else
+   up or down in an effe unit display.}
+  \item{show}{Optional; Character string of "Hist", "RBOW" or "Both". show = "Hist" displays 
+   a Histogram depicting the distribution of Economic Preferences within the ICE Wedge, while
+   show = "RBOW" applies a rainbow of colors (Red--Tan--Yellow--Green) to depict the Economic
+   Preference level associated with each re-sampled point within the ICE Wedge. show = "Both"
+   is the default; it requires the user to press the ENTER key when ready to overwrite the 
+   initial "Hist" display with the corresponding "RBOW" plot.}
   \item{\dots}{Optional; Argument(s) passed on to plot().}
 }
 \details{
   To illustrate the sensitivity of Economic Preferences to choice of lambda, multiple calls are 
   usually made to ICEcolor() for different values of lambda as well as for different choices of
-  the beta and gamma parameters that determine the shape of and spacing between the Indifference
-  Curves of an ICE Preference Map.
+  the beta and gamma parameters that determine the shape of (and spacing between) Indifference
+  Curves on an ICE Economic Preference Map.
   
   The plot() of an object of class ICEcolor displays the Bootstrap Distribution of ICE Uncertainty
   using small, circular, colored dots (pch = 20).  Outcomes outside the Confidence Wedge are
   displayed in black, while outcomes inside the Wedge are displayed in a rainbow of colors (within
-  the red-tan-yellow-green range) that represent Economic Preferences.
+  the Red--Tan--Yellow--Green range) that represent Economic Preferences.
   
-  Upper and lower ICE Ray Limits are again displayed as solid black lines, while the Straight Line
-  through the ICE origin that represents lambda is shown as a dashed black line.  In an Alias
-  graphic, the slope of this dashed, black line will always be one; however, this dashed line
-  usually does not appear to bisect the North-East and South-West ICE quadrants because DIFFERENT
-  SCALINGS are being used along the horizontal and vertical axes. In an Alibi graphic where the
-  scaling along both axes is the SAME, the slope of this dashed, black line will always be lambda;
-  this dashed line will thus not bisect the North-East and South-West ICE quadrants unless lambda
-  = 1.
+  Upper and lower ICE Confidence Limits are again displayed as Solid black Rays. The Dashed black
+  LINE trough the ICE Origin, (0,0), has slope 1, indicating the ZERO Preference boundary that
+  literally bisects the North-East and South-West ICE Quadrants. This Dashed Line may not "appear"
+  to have slope 1, but that happens only when the horizontal and vertical RANGES displayed are
+  quite different.
 }
 \value{NULL}
 \references{
@@ -61,8 +65,7 @@
 \examples{
   data(dpwdg) 
   dpcol <- ICEcolor(dpwdg)
-  plot(dpcol)
-  plot(dpcol, alibi=TRUE)
+  plot(dpcol, show="RBOW")
+  plot(dpcol, alibi=TRUE, show="RBOW")
 }
 \keyword{methods}
-\keyword{hplot}

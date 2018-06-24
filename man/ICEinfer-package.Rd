@@ -20,11 +20,11 @@
   \tabular{ll}{
   Package: \tab ICEinfer\cr
   Type: \tab Package\cr
-  Version: \tab 1.0-4\cr
-  Date: \tab 2018-03-19\cr
+  Version: \tab 1.1\cr
+  Date: \tab 2018-06-25\cr
   License: \tab GNU GENERAL PUBLIC LICENSE, Version 2, June 1991\cr
   }
-Statistical inference using functions from the ICEinfer package usually start
+Statistical inference using functions from the ICEinfer package usually starts
 with (possibly multiple) invocations of ICEscale() to help determine a reasonable
 value for the Shadow Price of Health, lambda.  This is invariably followed by a
 single call to ICEuncrt to generate the Bootstrap Distribution of ICE Uncertainty

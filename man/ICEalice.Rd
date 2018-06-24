@@ -71,8 +71,8 @@
   # Read in previously computed ICEwedge output list.
   data(dpwdg)
   dpacc <- ICEalice(dpwdg)
-  # Display VAGR and ALICE acceptability curves.
-  plot(dpacc)
+  # Display the ALICE curve.
+  plot(dpacc, show="Alice")
   dpacc
 }
 \keyword{methods}

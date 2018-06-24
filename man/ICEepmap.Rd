@@ -19,8 +19,9 @@
   difference and the y cost difference are both expressed in the same units (i.e. both in cost units
   or else both in effe units.)  Unfortunately, the only way to assure display of this particular sort
   of rescaling in ICE plane depictions is to use alibi = TRUE in plot.ICEuncrt().  Both plot.ICEwedge()
-  and plot.ICEcolor() always use alias axis rescaling so that the equivariance property of the
-  wedge-shaped ICE confidence region is depicted as if it were invariant under changes in lambda.  
+  and plot.ICEcolor() always default to alias axis scaling. Thus the equivariance property of the
+  ICE confidence wedge is depicted as if the rays determining its upper and lower limits are invariant
+  under changes in lambda.  
   
   The easy way to visualize a standardized ICE map is to always use the default value of lambda = 1 in
   ICEepmap() and ICEomega().  A standardized ICE map always has the following two characteristics:

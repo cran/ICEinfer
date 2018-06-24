@@ -3,7 +3,6 @@ importFrom("graphics", "abline", "axis", "box", "hist", "lines",
            "matlines", "matplot", "par", "plot", "points", "title")
 importFrom("stats", "na.omit", "runif", "var")
 importFrom("lattice", "contourplot")
-#import(lattice)
 
 export(ICEalice)
 S3method(plot, ICEalice)

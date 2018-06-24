@@ -3,8 +3,6 @@
 \alias{ICEangle}
 \alias{ICEd2m}
 \alias{ICErunif}
-\alias{plot.ICEalice}
-\alias{plot.ICEscale}
 \alias{plot.ICEwedge}
 \alias{print.ICEalice}
 \alias{print.ICEcolor}

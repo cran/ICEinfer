@@ -333,99 +333,115 @@ function (ICEu, lfact = 1, conf = 0.95)
     ICEwdgol
 }
 `plot.ICEalice` <-
-function (x, ...) 
+function (x, show = "Both", ...) 
 {
     if (missing(x) || !inherits(x, "ICEalice")) 
         stop("The first argument to plot.ICEalice must be an ICEalice object.")
+    if (show != "VAGR" && show != "Alice")
+        show <- "Both"
     a7 <- c(45, 60, 75, 90, 105, 120, 135)
     x1 <- x$acc[, 1]
     x2 <- x$acc[, 2]
     x2[13] <- 4 * x2[12]
     y3 <- x$acc[, 3]
     y5 <- x$acc[, 5]
-    matplot(x2, y3, type = "n", xlim = c(0, 3 * x2[12]), xlab = "ICE Willingness To Pay", 
-        ylim = c(0, 1), ylab = "Acceptability", main = "VAGR Acceptability Curve")
-    matlines(x2, y3)
-    opar <- par(ask = dev.interactive(orNone = TRUE))
-    matplot(x1, y5, type = "n", xlim = c(45, 135), xlab = "ICE Angle (theta)", 
-        ylim = c(0, 1), ylab = "Acceptability", main = "ALICE Curve", 
-        axes = FALSE)
-    axis(1, a7)
-    axis(2)
-    box()
-    matlines(x1, y5)
-    abline(v = 90)
-    par(opar)
+    if (show == "Both" || show == "VAGR") {
+        matplot(x2, y3, type = "n", xlim = c(0, 3 * x2[12]), xlab = "ICE Willingness To Pay", 
+            ylim = c(0, 1), ylab = "Acceptability", main = "VAGR Acceptability Curve")
+        matlines(x2, y3)
+    }	
+    if (show == "Both") {	
+        cat("\nICEplots ...Press ENTER to display the corresponding ALICE curve.\n")
+        scan()  # This PAUSE allows the user to SAVE the currently displayed VAGR curve.
+    }
+    if (show == "Both" || show == "Alice") {
+        matplot(x1, y5, type = "n", xlim = c(45, 135), xlab = "ICE Angle (theta)", 
+            ylim = c(0, 1), ylab = "Acceptability", main = "ALICE Curve", 
+            axes = FALSE)
+        axis(1, a7)
+        axis(2)
+        box()
+        matlines(x1, y5)
+        abline(v = 90)
+    }
 }
 `plot.ICEcolor` <-
-function (x, alibi = FALSE, ...) 
+function (x, alibi = FALSE, show = "Both", ...) 
 {
     if (missing(x) || !inherits(x, "ICEcolor")) 
         stop("The first argument to plot.ICEcolor must be an ICEcolor object.")
+    if (show != "Hist" && show != "RBOW")
+        show <- "Both"
     cv <- rainbow(12, start = 0, end = 0.33)
     pmax <- max(c(abs(max(x$pref, na.rm = TRUE)), abs(min(x$pref, 
         na.rm = TRUE))))
     eta <- x$gamma/x$beta
-    if (alibi == FALSE) {
-        plot(x$axys[x$axys[, 4] == 1, 2], x$axys[x$axys[, 4] == 1, 
-            3], main = "ICE Alias Confidence Wedge with Preference Colors", 
-            xlab = "Effectiveness Difference", ylab = "Cost Difference", 
-            sub = paste("lambda =", round(x$lambda, digits = 3), ", beta =", 
-                round(x$beta, digits = 3), ", gamma =", round(x$gamma, 
-                digits = 3), ", eta =", round(eta, digits = 3)), 
-            xlim = c(-1 * x$xmax, x$xmax), ylim = c(-1 * x$ymax, x$ymax),
-            pch = 20, bg = "white", col = cv[round(5.5 * (x$pref[x$axys[, 
-                4] == 1] + pmax)/pmax) + 1])
-        points(x$axys[x$axys[, 4] == 0, 2], x$axys[x$axys[, 4] == 0, 3],
-            col = "black", pch = 20)
+    if (show == "Both" || show == "Hist") {
+        hist(x$pref[x$axys[, 4] == 1], main = "", xlab = "Preference Score")
+        title(main = "Economic Preference Distribution within ICE Wedge", 
+            font.main = 3)
+    }
+    if (show == "Both") {
+        cat("\nICEcolor ...Press ENTER to display the ICEcolor MAP.\n")
+        scan()  # This PAUSE allows the user to SAVE the displayed PREFERENCE distribution.
+    }
+    if (show == "Both" || show == "RBOW") {
+        if (alibi == FALSE) {
+            plot(x$axys[x$axys[, 4] == 1, 2], x$axys[x$axys[, 4] == 1, 
+                3], main = "ICE Alias Wedge with Preference Colors", 
+                xlab = "Effectiveness Difference", ylab = "Cost Difference", 
+                sub = paste("lambda =", round(x$lambda, digits = 3), ", beta =", 
+                    round(x$beta, digits = 3), ", gamma =", round(x$gamma, 
+                    digits = 3), ", eta =", round(eta, digits = 3)), 
+                xlim = c(-1 * x$xmax, x$xmax), ylim = c(-1 * x$ymax, x$ymax),
+                pch = 20, bg = "white", col = cv[round(5.5 * (x$pref[x$axys[, 
+                    4] == 1] + pmax)/pmax) + 1])
+            points(x$axys[x$axys[, 4] == 0, 2], x$axys[x$axys[, 4] == 0, 3],
+                col = "black", pch = 20)
+            par(lty = 1)
+            abline(h = 0, v = 0)
+            mfac <- 10 * max(x$xmax, x$ymax)/sqrt(x$axys[x$kup, 2]^2 + 
+                x$axys[x$kup, 3]^2)
+            xray <- c(0, x$axys[x$kup, 2]) * mfac
+            yray <- c(0, x$axys[x$kup, 3]) * mfac
+            lines(xray, yray)
+            mfac <- 10 * max(x$xmax, x$ymax)/sqrt(x$axys[x$jlo, 2]^2 + 
+                x$axys[x$jlo, 3]^2)
+            xray <- c(0, x$axys[x$jlo, 2]) * mfac
+            yray <- c(0, x$axys[x$jlo, 3]) * mfac
+            lines(xray, yray)
+            par(lty = 3)
+            abline(c(0, 1))
+            }
+        else {
+            amax = max(x$xmax, x$ymax)
+            plot(x$axys[x$axys[, 4] == 1, 2], x$axys[x$axys[, 4] == 1, 
+                3], main = "ICE Alibi Wedge with Preference Colors", 
+                xlab = "Effectiveness Difference", ylab = "Cost Difference", 
+                sub = paste("lambda =", round(x$lambda, digits = 3), ", beta =", 
+                    round(x$beta, digits = 3), ", gamma =", round(x$gamma, 
+                    digits = 3), ", eta =", round(eta, digits = 3)), 
+                xlim = c(-amax, amax), asp = 1, pch = 20, bg = "white",
+                col = cv[round(5.5 * (x$pref[x$axys[, 4] == 1] + pmax)/pmax) + 1])
+            points(x$axys[x$axys[, 4] == 0, 2], x$axys[x$axys[, 4] == 0, 3],
+                col = "black", pch = 20)
+            par(lty = 1)
+            abline(h = 0, v = 0)
+            mfac <- 10 * max(x$xmax, x$ymax)/sqrt(x$axys[x$kup, 2]^2 + 
+                x$axys[x$kup, 3]^2)
+            xray <- c(0, x$axys[x$kup, 2]) * mfac
+            yray <- c(0, x$axys[x$kup, 3]) * mfac
+            lines(xray, yray)
+            mfac <- 10 * max(x$xmax, x$ymax)/sqrt(x$axys[x$jlo, 2]^2 + 
+                x$axys[x$jlo, 3]^2)
+            xray <- c(0, x$axys[x$jlo, 2]) * mfac
+            yray <- c(0, x$axys[x$jlo, 3]) * mfac
+            lines(xray, yray)
+            par(lty = 3)
+            abline(c(0, 1))   # show as "standardized" x$lambda == 1
+            }
         par(lty = 1)
-        abline(h = 0, v = 0)
-        mfac <- 10 * max(x$xmax, x$ymax)/sqrt(x$axys[x$kup, 2]^2 + 
-            x$axys[x$kup, 3]^2)
-        xray <- c(0, x$axys[x$kup, 2]) * mfac
-        yray <- c(0, x$axys[x$kup, 3]) * mfac
-        lines(xray, yray)
-        mfac <- 10 * max(x$xmax, x$ymax)/sqrt(x$axys[x$jlo, 2]^2 + 
-            x$axys[x$jlo, 3]^2)
-        xray <- c(0, x$axys[x$jlo, 2]) * mfac
-        yray <- c(0, x$axys[x$jlo, 3]) * mfac
-        lines(xray, yray)
-        par(lty = 3)
-        abline(c(0, 1))
-        }
-    else {
-        amax = max(x$xmax, x$ymax)
-        plot(x$axys[x$axys[, 4] == 1, 2], x$axys[x$axys[, 4] == 1, 
-            3], main = "ICE Alibi Confidence Wedge with Preference Colors", 
-            xlab = "Effectiveness Difference", ylab = "Cost Difference", 
-            sub = paste("lambda =", round(x$lambda, digits = 3), ", beta =", 
-                round(x$beta, digits = 3), ", gamma =", round(x$gamma, 
-                digits = 3), ", eta =", round(eta, digits = 3)), 
-            xlim = c(-amax, amax), asp = 1, pch = 20, bg = "white",
-            col = cv[round(5.5 * (x$pref[x$axys[, 4] == 1] + pmax)/pmax) + 1])
-        points(x$axys[x$axys[, 4] == 0, 2], x$axys[x$axys[, 4] == 0, 3],
-            col = "black", pch = 20)
-        par(lty = 1)
-        abline(h = 0, v = 0)
-        mfac <- 10 * max(x$xmax, x$ymax)/sqrt(x$axys[x$kup, 2]^2 + 
-            x$axys[x$kup, 3]^2)
-        xray <- c(0, x$axys[x$kup, 2]) * mfac
-        yray <- c(0, x$axys[x$kup, 3]) * mfac
-        lines(xray, yray)
-        mfac <- 10 * max(x$xmax, x$ymax)/sqrt(x$axys[x$jlo, 2]^2 + 
-            x$axys[x$jlo, 3]^2)
-        xray <- c(0, x$axys[x$jlo, 2]) * mfac
-        yray <- c(0, x$axys[x$jlo, 3]) * mfac
-        lines(xray, yray)
-        par(lty = 3)
-        abline(c(0, x$lambda))
-        }
-    par(lty = 1)
-    opar <- par(ask = dev.interactive(orNone = TRUE))
-    hist(x$pref[x$axys[, 4] == 1], main = "", xlab = "Preference Score")
-    title(main = "Economic Preference Distribution within ICE Wedge", 
-        font.main = 3)
-    par(opar)
+    }
 }
 `plot.ICEepmap` <-
 function (x, xygrid = FALSE, ...) 
@@ -517,7 +533,7 @@ function (x, lfact = 1, swu = FALSE, alibi = FALSE, ...)
         par(lty = 2)
         abline(v = x$t1[1], h = x$t1[2])
         par(lty = 3)
-        abline(c(0, lambda))
+        abline(c(0, 1))   # Show as lambda == 1
         title(main = paste("ICE Alibi Uncertainty for Lambda =", 
             lambda), xlab = "Effectiveness Difference", ylab = "Cost Difference", 
             sub = paste("Units =", ceunit, ": Bootstrap Reps =", x$R))
@@ -556,7 +572,7 @@ function (x, ...)
     yray <- c(0, x$axys[x$center, 3]) * mfac
     lines(xray, yray)
     par(lty = 1)
-    title(main = paste("Wedge-Shaped ICE Region with Confidence =", 
+    title(main = paste("ICE Wedge with Confidence =", 
         100 * x$conf, "%"), xlab = "Effectiveness Difference", 
         ylab = "Cost Difference", sub = paste("Units =", x$ceunit, 
             "; lambda =", round(x$lambda, digits = 3), "; Angles =", x$ab))

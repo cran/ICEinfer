@@ -17,23 +17,19 @@ plot(dpunc)
 
 dpwdg <- ICEwedge(dpunc)
 dpwdg
-opar <- par(ask = dev.interactive(orNone = TRUE))
-# Click within graphics window to display the Bootstrap 95% Confidence Wedge...
 plot(dpwdg)
 
-# Computing VAGR Acceptability and ALICE Curves...
+# Compute VAGR Acceptability and ALICE Curves...
 dpacc <- ICEalice(dpwdg)
-plot(dpacc)
+plot(dpacc, show="VAGR")
+plot(dpacc, show="Alice")
 
 # Color Interior of Confidence Wedge with LINEAR Economic Preferences...
 dpcol <- ICEcolor(dpwdg, gamma=1)
-plot(dpcol)
+plot(dpcol, show="RBOW")
+plot(dpcol, show="Hist")
 
 # Increase Lambda and Recolor Confidence Wedge with NON-Linear Preferences...
 dpcol <- ICEcolor(dpwdg, lfact=10)
-plot(dpcol)
-
-# Decrease Lambda and Recolor Confidence Wedge with LINEAR Preferences...
-dpcol <- ICEcolor(dpwdg, lfact=10, gamma=1)
-plot(dpcol)
-par(opar)
+plot(dpcol, show="RBOW")
+plot(dpcol, show="Hist")

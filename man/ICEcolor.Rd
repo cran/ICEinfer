@@ -1,22 +1,21 @@
 \name{ICEcolor}
 \alias{ICEcolor}
-\title{Compute Preference Colors for Outcomes in a Bootstrap ICE Scatter within a Confidence Wedge}
+\title{Compute Preference Colors for Outcomes within a Bootstrap Confidence Wedge}
 \description{
- Assuming ICEw is an object of class ICEwedge, ICEcolor uses the value of lambda given
- by lfact * (ICEw item lambda) and the ICE Preference Map with parameters beta and gamma to compute
- the Economic Preference value for only the points in a Bootstrap Distribution of ICE Uncertainty
- that also happen to fall within the ICE confidence wedge.  When the overall level of confidence
- (statistical size of the wedge) is held fixed, the points to be colored are always the very same
- points for all choices of lambda.  However, the numerical value of preference (and thus the color)
- for each such point as well as potential overall asymmetry in the resulting ICE map do depend
- greatly upon choice of lambda. 
+ Assuming the input ICEw object is of class ICEwedge, ICEcolor uses lambda = lfact * ICEw$lambda
+ to define an ICE Preference Map with specified parameters (lfact, beta, gamma) to compute
+ Economic Preference values. Only the Bootstrap re-sampled points within the ICE confidence wedge
+ are used. Thus, assuming that the overall level of confidence (statistical size of the wedge) is
+ held fixed, the points to be colored are always the very same points for all choices of lambda.
+ However, the numerical value of preference (and thus the color) of each such point as well as
+ the overall symmetry or asymmetry in the resulting ICE map can depend greatly upon lambda. 
 }
 \usage{
  ICEcolor(ICEw, lfact = 1, beta = 1, gamma = 3+2*sqrt(2)) 
 }
 \arguments{
   \item{ICEw}{Existing ICEwedge object.}
-  \item{lfact}{Strictly positive multiplier for ICEw item lambda.}
+  \item{lfact}{Strictly positive multiplier for ICEw$lambda.}
   \item{beta}{Strictly positive Returns-to-Scale power parameter for the ICE
    Preference Map.  beta = 1 implies linear (constant) Returns to Scale.  beta > 0 and < 1
    implies diminishing Returns to Scale.  beta > 1 implies increasing Returns to Scale.}
@@ -26,9 +25,9 @@
    satisfies the Cartesian Monotonicity Axiom and also admits all possible finite values for
    WTP and WTA, i.e. all values greater than or equal to 0 but less than +Inf.}
 }
-\details{Multiple calls to ICEcolor() are usually made for different lfact multipliers of the
-  lambda item within ICEw as well as different choices for the ICE Preference power parameters,
-  beta and gamma.  Calls to plot(x, alibi) for these alternative ICEcolor x-objects can be used
+\details{Multiple calls to ICEcolor() are usually made for different lfact multipliers of
+  LCEw$lambda item as well as different choices for the ICE Preference power parameters, beta
+  and gamma.  Calls to plot(x, alibi) for these alternative ICEcolor x-objects can be used
   to illustrate that exogenous Economic Uncertainty can literally SWAMP the Statistical
   Uncertainty endogenous to patient level data on the relative cost and effectiveness of two
   treatments.  
@@ -62,9 +61,9 @@
   data(dpwdg)
   dpcol <- ICEcolor(dpwdg)
   # Display preference coloring for the stored value of lambda.
-  plot(dpcol)
+  plot(dpcol, show="RBOW")
   dpcolX <- ICEcolor(dpwdg, lfact=10)
   # Display preference coloring when lambda is increased by a factor of 10.
-  plot(dpcolX)
+  plot(dpcolX, show="RBOW")
 }
 \keyword{methods}
