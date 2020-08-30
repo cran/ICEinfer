@@ -17,6 +17,8 @@ export(ICEomega)
 S3method(plot, ICEepmap)
 S3method(print, ICEepmap)
 
+export(ICEpref)
+
 export(ICEscale)
 S3method(print, ICEscale)
 

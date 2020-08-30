@@ -20,20 +20,20 @@
   \tabular{ll}{
   Package: \tab ICEinfer\cr
   Type: \tab Package\cr
-  Version: \tab 1.1\cr
-  Date: \tab 2018-06-25\cr
+  Version: \tab 1.2\cr
+  Date: \tab 2020-09-01\cr
   License: \tab GNU GENERAL PUBLIC LICENSE, Version 2, June 1991\cr
   }
 Statistical inference using functions from the ICEinfer package usually starts
 with (possibly multiple) invocations of ICEscale() to help determine a reasonable
 value for the Shadow Price of Health, lambda.  This is invariably followed by a
 single call to ICEuncrt to generate the Bootstrap Distribution of ICE Uncertainty
-corresponding to the chosen value of lambda.  However, the print() and plot()
-functions for objects of type ICEuncrt do have optional arguments, lfact and swu,
-to help the user quantify and visualize the consequences of changing lambda and
+corresponding to the chosen value of lambda.  The print() and plot()
+functions for objects of type ICEuncrt have optional arguments, lfact and swu,
+to help users quantify and visualize the consequences of changing lambda and
 switching between cost and effe units.
 
-Next, a single call to ICEwedge() yields the equivariant, wedge-shaped region
+A single call to ICEwedge() then yields the equivariant, wedge-shaped region
 of specified statistical confidence within [.50, .99] ...by computing ICE Angle
 Order Statistics around a circle with center at the ICE Origin: (DeltaEffe, DeltaCost)
 = (0, 0).
@@ -43,10 +43,11 @@ ICEalice().
 
 Finally, multiple calls to ICEcolor for different values of lambda and/or different
 forms of (linear or nonlinear) ICE Preference Maps are typically used to illustrate
-the considerable additional Economic Preference Uncertainty that can be introduced.
-This Economic Uncertainty is superimposed on top of the inherent Statistical
-Uncertainty contained in unbiased, patient level data on the relative cost and
-effectiveness of two treatments for the same disease / condition.
+the considerable additional Economic Preference Uncertainty that can be introduced
+in these ways. This Economic Preference uncertainty is superimposed on top of the
+inherent Statistical Uncertainty contained within even unbiased, patient level data
+on the relative cost and effectiveness of two treatments for the same disease or
+health condition.
 }
 \author{Bob Obenchain <wizbob@att.net>}
 \references{
@@ -68,5 +69,11 @@ effectiveness of two treatments for the same disease / condition.
  Obenchain RL.  ICE Preference Maps:  Nonlinear Generalizations of Net Benefit and
  Acceptability. \emph{Health Serv Outcomes Res Method}  2008; \bold{8}: 31-56. DOI 
  10.1007/s10742-007-0027-2. Open Access.
+ 
+ Obenchain RL. (2020) \emph{ICEinfer_in_R.PDF}  ICEinfer package vignette-like document.
+ \url{http://localcontrolstatistics.org}
 }
 \keyword{package}
+\examples{
+  demo(fluoxpin)
+}

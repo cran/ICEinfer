@@ -1,11 +1,11 @@
 Package: ICEinfer
-Version: 1.1
-Date: 2018-06-25
+Version: 1.2
+Date: 2020-09-01
 Title: Incremental Cost-Effectiveness Inference using Two Unbiased
         Samples
-Author: Bob Obenchain 
+Author: Bob Obenchain
 Maintainer: Bob Obenchain <wizbob@att.net>
-Depends: lattice
+Depends: R (>= 3.5.0), lattice
 Description: Given two unbiased samples of patient level data on cost and effectiveness
   for a pair of treatments, make head-to-head treatment comparisons by (i) generating the
   bivariate bootstrap resampling distribution of ICE uncertainty for a specified value of
@@ -16,9 +16,9 @@ Description: Given two unbiased samples of patient level data on cost and effect
   parameters, (iv) display VAGR and ALICE acceptability curves, and (v) illustrate variation
   in ICE preferences by displaying potentially non-linear indifference(iso-preference) curves
   from an ICE map with specified values of lambda, beta and either gamma or eta parameters. 
-License: GPL
+License: GPL-2
 URL: https://www.R-project.org , http://localcontrolstatistics.org
 NeedsCompilation: no
-Packaged: 2018-06-24 15:36:21 UTC; wiz
+Packaged: 2020-08-29 23:21:08 UTC; bobo
 Repository: CRAN
-Date/Publication: 2018-06-24 22:39:30 UTC
+Date/Publication: 2020-08-30 05:20:11 UTC
