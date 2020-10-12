@@ -50,8 +50,12 @@ function (df, trtm, xeffe, ycost, lambda = 1, ceunit = "cost", R = 25000, seed =
         rownew <- ICErunif(nstd + 1, nnew)
         t[i, ] <- ICEd2m(effcst, rownew, rowstd)
     }
-    ICEuncol <- c(ICEuncol, list(trtm = trtm, xeffe = xeffe, 
-        ycost = ycost, effcst = effcst, t1 = t1, t = t, seed = seed))
+    icer.bias <- t1[1] / t1[2]
+    icer.boot <- mean(t[,1]) / mean(t[,2])
+    icer.unbi <- 2 * icer.bias - icer.boot
+    ICEuncol <- c(ICEuncol, list(trtm = trtm, xeffe = xeffe, ycost = ycost, effcst = effcst, 
+        t1 = t1, t = t, icer.bias = icer.bias, icer.boot = icer.boot, icer.unbi = icer.unbi,		
+        seed = seed))
     class(ICEuncol) <- "ICEuncrt"
     ICEuncol
 }
@@ -112,7 +116,7 @@ function (x, lfact = 1, swu = FALSE, alibi = FALSE, ...)
         title(main = paste("ICE Alias Uncertainty for Lambda =", 
             lambda), xlab = "Effectiveness Difference", ylab = "Cost Difference", 
             sub = paste("Units =", ceunit, ": Bootstrap Reps =", x$R))
-        }
+    }
     else {
         amax <- max(emax, cmax)
         plot(x$t[, 1], x$t[, 2], ann = FALSE, type = "p", ylim = c(-amax, 
@@ -126,12 +130,7 @@ function (x, lfact = 1, swu = FALSE, alibi = FALSE, ...)
         title(main = paste("ICE Alibi Uncertainty for Lambda =", 
             lambda), xlab = "Effectiveness Difference", ylab = "Cost Difference", 
             sub = paste("Units =", ceunit, ": Bootstrap Reps =", x$R))
-        }
-    ICEuncol <- list(df = x$df, lambda = lambda, ceunit = ceunit, R = x$R,
-        trtm = x$trtm, xeffe = x$xeffe, ycost = x$ycost, effcst = x$effcst,
-        t1 = x$t1, t = x$t, seed = x$seed)
-    class(ICEuncol) <- "ICEuncrt"
-    ICEuncol
+    }
 }
 
 "print.ICEuncrt" <-
@@ -171,9 +170,8 @@ function (x, lfact = 1, swu = FALSE, ...)
     cat(paste("\nEffectiveness variable Name =", x$xeffe))
     cat(paste("\n     Cost     variable Name =", x$ycost))
     cat(paste("\n  Treatment   factor   Name =", x$trtm))
-    cat(paste("\nNew treatment level is =", names(table(x$effcst[, 
-        1]))[2], "and Standard level is =", names(table(x$effcst[, 
-        1]))[1], "\n"))
+    cat(paste("\nNew treatment level is =", names(table(x$effcst[,1]))[2],
+        "and Standard level is =", names(table(x$effcst[,1]))[1], "\n"))
     cat(paste("\nCost and Effe Differences are both expressed in", 
         ceunit, "units\n"))
     if (lfact != 1) {
@@ -187,17 +185,11 @@ function (x, lfact = 1, swu = FALSE, ...)
             x$t[, 2] <- x$t[, 2] / lfact
         }
     }
-    cat(paste("\nObserved  Treatment Diff =", round(x$t1[1], 
-        digits = 3)))
-    cat(paste("\nMean Bootstrap Trtm Diff =", round(mean(x$t[, 
-        1]), digits = 3), "\n"))
-    cat(paste("\nObserved Cost Difference =", round(x$t1[2], 
-        digits = 3)))
-    cat(paste("\nMean Bootstrap Cost Diff =", round(mean(x$t[, 
-        2]), digits = 3), "\n\n"))
-    ICEuncol <- list(df = x$df, lambda = lambda, ceunit = ceunit, R = x$R,
-        trtm = x$trtm, xeffe = x$xeffe, ycost = x$ycost, effcst = x$effcst,
-        t1 = x$t1, t = x$t, seed = x$seed)
-    class(ICEuncol) <- "ICEuncrt"
-    ICEuncol
+    cat(paste("\nObserved  Treatment Diff =", round(x$t1[1], digits = 3)))
+    cat(paste("\nMean Bootstrap Trtm Diff =", round(mean(x$t[,1]), digits = 3), "\n"))
+    cat(paste("\nObserved Cost Difference =", round(x$t1[2], digits = 3)))
+    cat(paste("\nMean Bootstrap Cost Diff =", round(mean(x$t[,2]), digits = 3), "\n"))
+    cat(paste("\nConsistent (Biased) ICER =", round(x$icer.bias, digits = 4), "\n"))
+    cat(paste("\nBootstrap Mean ICE ratio =", round(x$icer.boot, digits = 4), "\n"))
+    cat(paste("\nUnbiased  ICER  estimate =", round(x$icer.unbi, digits = 4), "\n\n"))
 }

@@ -26,6 +26,10 @@ for sepsis by two alternative Intensive Care Units.}
 \references{
   Obenchain RL, Sacristan JA.  In reply to: The negative side of cost-effectiveness ratios.
   \emph{JAMA} 1997; \bold{277}: 1931--1933.
+  
+  Hoch JS, Briggs AH, Willan AR. Something old, something new, something borrowed,
+  something blue: a framework for the marriage of health econometrics and
+  cost effectiveness analysis. \emph{Health Economics} 2002; \bold{11}: 415-430.
 }
 \examples{
     data(sepsis)

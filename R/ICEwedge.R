@@ -10,27 +10,29 @@ function (ICEu, lfact = 1, conf = 0.95)
     ceunit <- ICEu$ceunit
     R <- ICEu$R
     t <- ICEu$t
-    t1 <- ICEu$t1
+    t1 <- ICEu$t1	
+    iru <- ICEu$icer.unbi
     ab <- "alibi"
     if (lfact == 0) {
         lfact <- max(c(abs(max(t[, 2])), abs(min(t[, 2])))) /
                  max(c(abs(max(t[, 1])), abs(min(t[, 1]))))
         ab <- "alias"                
-        }
+    }
     lambda <- lfact * ICEu$lambda
     if (lfact != 1) {
         if (ceunit == "cost") {
             t1[1] <- t1[1] * lfact
-            t[, 1] <- t[, 1] * lfact
+            t[,1] <- t[,1] * lfact
         }
         else {
             t1[2] <- t1[2]/lfact
-            t[, 2] <- t[, 2]/lfact
+            t[,2] <- t[,2]/lfact
         }
     }
     ICEwdgol <- list(ICEinp = deparse(substitute(ICEu)), lambda = lambda, 
         lfact = lfact, ceunit = ceunit, conf = conf)
-    ia1 <- ICEangle(t1[1], t1[2])
+    t1u <- t1[2] * iru       # value of t1[1] yielding unbiased "ia1" angle
+    ia1 <- ICEangle(t1u, t1[2])
     ia <- rep(90, R)
     for (i in 1:R) ia[i] <- ICEangle(t[i, 1], t[i, 2])
     axys <- data.frame(cbind(ia, t, rep(0, R)))
@@ -78,7 +80,7 @@ function (ICEu, lfact = 1, conf = 0.95)
     }
     xmax <- max(c(abs(max(axys[, 2])), abs(min(axys[, 2]))))
     ymax <- max(c(abs(max(axys[, 3])), abs(min(axys[, 3]))))
-    ICEwdgol <- c(ICEwdgol, list(R = R, axys = axys, t1 = t1, 
+    ICEwdgol <- c(ICEwdgol, list(R = R, axys = axys, t1 = t1, iru = iru,
         ia1 = ia1, center = center, jlo = j, kup = k, subangle = subangle, 
         xmax = xmax, ymax = ymax, ab = ab))
     class(ICEwdgol) <- "ICEwedge"

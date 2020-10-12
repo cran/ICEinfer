@@ -1,6 +1,6 @@
 Package: ICEinfer
-Version: 1.2
-Date: 2020-09-01
+Version: 1.3
+Date: 2020-10-10
 Title: Incremental Cost-Effectiveness Inference using Two Unbiased
         Samples
 Author: Bob Obenchain
@@ -19,6 +19,6 @@ Description: Given two unbiased samples of patient level data on cost and effect
 License: GPL-2
 URL: https://www.R-project.org , http://localcontrolstatistics.org
 NeedsCompilation: no
-Packaged: 2020-08-29 23:21:08 UTC; bobo
+Packaged: 2020-10-12 16:22:30 UTC; bobo
 Repository: CRAN
-Date/Publication: 2020-08-30 05:20:11 UTC
+Date/Publication: 2020-10-12 18:30:02 UTC

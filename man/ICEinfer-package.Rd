@@ -20,8 +20,8 @@
   \tabular{ll}{
   Package: \tab ICEinfer\cr
   Type: \tab Package\cr
-  Version: \tab 1.2\cr
-  Date: \tab 2020-09-01\cr
+  Version: \tab 1.3\cr
+  Date: \tab 2020-10-10\cr
   License: \tab GNU GENERAL PUBLIC LICENSE, Version 2, June 1991\cr
   }
 Statistical inference using functions from the ICEinfer package usually starts
@@ -53,17 +53,17 @@ health condition.
 \references{
  Black WC.  The CE plane: a graphic representation of cost-effectiveness.  \emph{Med
  Decis Making} 1990; \bold{10}: 212-214.
+ 
+ Hoch JS, Briggs AH, Willan AR. Something old, something new, something borrowed,
+ something blue: a framework for the marriage of health econometrics and
+ cost-effectiveness analysis. \emph{Health Economics} 2002; \bold{11}: 415-430.
 
  Laupacis A, Feeny D, Detsky AS, Tugwell PX.  How attractive does a new technology have
  to be to warrant adoption and utilization?  Tentative guidelines for using clinical
- and economic evaluations.  \emph{Can Med Assoc J}  1992; \bold{146(4)}: 473-81.
-
- Stinnett AA, Mullahy J.  Net health benefits: a new framework for the analysis of
- uncertainty in cost-effectiveness analysis.  \emph{Medical Decision Making}, Special
- Issue on Pharmacoeconomics  1998; \bold{18}: S68-S80.
-
+ and economic evaluations. \emph{Can Med Assoc J} 1992; \bold{146(4)}: 473-81.
+ 
  O'Brien B, Gersten K, Willan A, Faulkner L.  Is there a kink in consumers' threshold
- value for cost-effectiveness in health care?  \emph{Health Econ}  2002; \bold{11}:
+ value for cost-effectiveness in health care?  \emph{Health Economics}  2002; \bold{11}:
  175-180.
 
  Obenchain RL.  ICE Preference Maps:  Nonlinear Generalizations of Net Benefit and
@@ -72,6 +72,13 @@ health condition.
  
  Obenchain RL. (2020) \emph{ICEinfer_in_R.PDF}  ICEinfer package vignette-like document.
  \url{http://localcontrolstatistics.org}
+ 
+ Stinnett AA.  Adjusting for Bias in C/E Ratio Estimates. \emph{Health Economics} LETTERS
+ Secton. 1996; \bold{5}: 470-472.
+
+ Stinnett AA, Mullahy J.  Net health benefits: a new framework for the analysis of
+ uncertainty in cost-effectiveness analysis.  \emph{Medical Decision Making}, Special
+ Issue on Pharmacoeconomics 1998; \bold{18}: s68-s80.
 }
 \keyword{package}
 \examples{
